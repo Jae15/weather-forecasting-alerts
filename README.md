@@ -10,7 +10,7 @@
 
 ## Project Overview
 
-This project demonstrates the development and deployment of **time-series forecasting models** (ARIMA and Prophet) to predict weather patterns and enable **automated agricultural alerts**. Built using real-world data from the Michigan Automated Weather Network (MAWN), this system supports farmers in making critical decisions about crop planning, pest management, and resource allocation.
+This project demonstrates the development and deployment of **time-series forecasting models** (ARIMA and Prophet) to predict weather patterns and enable **automated agricultural alerts**. Built using real-world data from the Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University, this system supports farmers in making critical decisions about crop planning, pest management, and resource allocation.
 
 ### Key Objectives
 
@@ -177,7 +177,7 @@ The dashboard will open in your browser at `http://localhost:8501`
 
 ### 1. Data Preparation
 
-**Data Source**: Michigan Automated Weather Network (MAWN) quality-controlled database
+**Data Source**: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University quality-controlled database
 
 **Sampling Strategy**:
 - Selected Aetna station for complete time-series continuity
@@ -328,7 +328,7 @@ This project showcases the following data science competencies:
 ## References
 
 ### Data Source
-- **Michigan Automated Weather Network (MAWN)**: [https://www.enviroweather.msu.edu/](https://www.enviroweather.msu.edu/)
+- **Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University**: [https://www.enviroweather.msu.edu/](https://www.enviroweather.msu.edu/)
 - Michigan State University, Department of Plant, Soil and Microbial Sciences
 
 ### Libraries & Tools
@@ -344,7 +344,10 @@ This project showcases the following data science competencies:
 ## ‍ About Me
 
 **Jae Mwangi** 
-Data Scientist | Michigan State University - Enviroweather
+Data Scientist | Enviroweather
+Department of Geography, Environment, and Spatial Sciences
+College of Social Science
+Michigan State University
 
 I'm a data scientist with experience in time-series forecasting, machine learning, and agricultural decision support systems. This project is part of my portfolio demonstrating real-world applications of data science in agriculture.
 
@@ -355,7 +358,10 @@ I'm a data scientist with experience in time-series forecasting, machine learnin
 - **Portfolio**: [TBD](https://TBD)
 
 ### Experience Highlights
-- **Data Scientist, Michigan State University - Enviroweather** (Feb 2024 - Present)
+- **Data Scientist, Enviroweather
+Department of Geography, Environment, and Spatial Sciences
+College of Social Science
+Michigan State University** (Feb 2024 - Present)
  - Built time-series forecasting models (ARIMA, Prophet) to predict weather and pest trends
  - Enabled automated alerts that supported 1,000+ farmers in planning crops and pest management
  - Applied clustering (K-means, Hierarchical) to segment microclimates and guide targeted recommendations

@@ -3,7 +3,7 @@
 
 **Author**: Jae Mwangi 
 **Project Duration**: October 2025 
-**Data Source**: Michigan Automated Weather Network (MAWN) 
+**Data Source**: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University 
 **Business Context**: Agricultural Decision Support
 
 ---
@@ -166,7 +166,7 @@ Imagine you're a farmer planning to plant tomatoes in late April:
 ## Technical Approach (Simplified)
 
 ### Step 1: Data Collection & Preparation
-- **Source**: Michigan Automated Weather Network (MAWN) - trusted, quality-controlled data
+- **Source**: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University - trusted, quality-controlled data
 - **Volume**: 55,956 hourly measurements → aggregated to 2,332 daily records
 - **Quality**: 99.96% complete data (very reliable)
 - **Variables**: Temperature, humidity, precipitation, wind, solar radiation, soil conditions
@@ -332,7 +332,10 @@ The **70% improvement in forecast accuracy** and **27-day advance warning** demo
 ## Contact & Portfolio
 
 **Jae Mwangi** 
-Data Scientist | Michigan State University - Enviroweather
+Data Scientist | Enviroweather
+Department of Geography, Environment, and Spatial Sciences
+College of Social Science
+Michigan State University
 
  **Email**: janomwangi@gmail.com 
  **LinkedIn**: [linkedin.com/in/jae-m-9a492636](https://www.linkedin.com/in/jae-m-9a492636/) 

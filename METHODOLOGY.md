@@ -21,7 +21,7 @@
 
 ### 1.1 Data Source
 
-**Michigan Automated Weather Network (MAWN)**
+**Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University**
 - Operated by Michigan State University
 - Quality-controlled (QC) database used for production systems
 - Hourly weather measurements from automated stations across Michigan
@@ -520,7 +520,10 @@ The methodology is **reproducible, scalable, and operationally viable** for depl
 ---
 
 **Author**: Jae Mwangi 
-**Affiliation**: Michigan State University - Enviroweather 
+**Affiliation**: Enviroweather
+Department of Geography, Environment, and Spatial Sciences
+College of Social Science
+Michigan State University 
 **Date**: October 2025 
 **Contact**: [LinkedIn](https://www.linkedin.com/in/jae-m-9a492636/)
 

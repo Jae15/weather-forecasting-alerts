@@ -32,7 +32,7 @@ Alert System:
 Data:
 - 2,332 daily records (6+ years)
 - 99.96% data completeness
-- Michigan Automated Weather Network (MAWN)
+- Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University
 
 ================================================================================
 PROJECT STRUCTURE
@@ -153,7 +153,10 @@ CONTACT
 ================================================================================
 
 Jae Mwangi
-Data Scientist | Michigan State University - Enviroweather
+Data Scientist | Enviroweather
+Department of Geography, Environment, and Spatial Sciences
+College of Social Science
+Michigan State University
 
  Email: janomwangi@gmail.com
  LinkedIn: https://www.linkedin.com/in/jae-m-9a492636/

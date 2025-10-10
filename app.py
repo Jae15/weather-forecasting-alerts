@@ -6,7 +6,7 @@ Interactive Streamlit application demonstrating time-series forecasting
 models (ARIMA, Prophet) and automated agricultural alert system.
 
 Author: Jae Mwangi
-Data Source: Michigan Automated Weather Network (MAWN)
+Data Source: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University
 """
 
 import streamlit as st
@@ -107,7 +107,7 @@ st.sidebar.info(
  This dashboard demonstrates time-series forecasting models (ARIMA, Prophet) 
  and an automated alert system for agricultural decision-making.
  
- **Data Source:** Michigan Automated Weather Network (MAWN) 
+ **Data Source:** Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University 
  **Station:** Aetna 
  **Period:** 2019-2025
  """
@@ -681,7 +681,7 @@ st.markdown("""
 <div style="text-align: center; color: #888; padding: 1rem;">
  <p><strong>Weather Forecasting & Alert System Dashboard</strong></p>
  <p>Developed by Jae Mwangi | Data Scientist</p>
- <p>Data Source: Michigan Automated Weather Network (MAWN) | 2019-2025</p>
+ <p>Data Source: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University | 2019-2025</p>
 </div>
 """, unsafe_allow_html=True)
 

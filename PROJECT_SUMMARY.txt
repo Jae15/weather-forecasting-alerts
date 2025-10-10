@@ -10,10 +10,10 @@ PROJECT OVERVIEW
 ================================================================================
 
 This is a complete, production-ready data science project that demonstrates:
-✅ Time-series forecasting (ARIMA, Prophet)
-✅ Automated alert system for agricultural decision support
-✅ Interactive Streamlit dashboard
-✅ End-to-end solution from data to deployment
+ Time-series forecasting (ARIMA, Prophet)
+ Automated alert system for agricultural decision support
+ Interactive Streamlit dashboard
+ End-to-end solution from data to deployment
 
 ================================================================================
 KEY RESULTS
@@ -39,79 +39,79 @@ PROJECT STRUCTURE
 ================================================================================
 
 Core Scripts:
-├── 01_timeseries_forecasting.py    Data preparation & EDA
-├── 02_model_building.py            Model training & evaluation
-├── 03_alert_system.py              Alert generation engine
-└── app.py                          Streamlit dashboard
+ 01_timeseries_forecasting.py Data preparation & EDA
+ 02_model_building.py Model training & evaluation
+ 03_alert_system.py Alert generation engine
+ app.py Streamlit dashboard
 
 Documentation:
-├── README.md                       Project overview & setup
-├── RESULTS_SUMMARY.md              Non-technical results (for recruiters)
-├── METHODOLOGY.md                  Technical methodology
-├── DEPLOYMENT.md                   Deployment instructions
-├── QUICKSTART.md                   5-minute quick start
-└── LICENSE                         MIT License
+ README.md Project overview & setup
+ RESULTS_SUMMARY.md Non-technical results (for recruiters)
+ METHODOLOGY.md Technical methodology
+ DEPLOYMENT.md Deployment instructions
+ QUICKSTART.md 5-minute quick start
+ LICENSE MIT License
 
 Data Files:
-├── mawn_hourly_sample.csv          Raw hourly data (100K records)
-├── daily_weather_aetna.csv         Processed daily data
-├── model_comparison_results.csv    Model performance metrics
-└── generated_alerts.csv            Alert log
+ mawn_hourly_sample.csv Raw hourly data (100K records)
+ daily_weather_aetna.csv Processed daily data
+ model_comparison_results.csv Model performance metrics
+ generated_alerts.csv Alert log
 
 Visualizations (9 figures):
-├── 01_weather_timeseries_overview.png
-├── 02_seasonal_patterns.png
-├── 03_acf_pacf_analysis.png
-├── 04_forecast_comparison.png
-├── 05_residual_analysis.png
-├── 06_model_performance_comparison.png
-├── 07_alert_system_overview.png
-├── 08_alert_timeline.png
-└── 09_alert_statistics.png
+ 01_weather_timeseries_overview.png
+ 02_seasonal_patterns.png
+ 03_acf_pacf_analysis.png
+ 04_forecast_comparison.png
+ 05_residual_analysis.png
+ 06_model_performance_comparison.png
+ 07_alert_system_overview.png
+ 08_alert_timeline.png
+ 09_alert_statistics.png
 
 ================================================================================
 SKILLS DEMONSTRATED
 ================================================================================
 
 Technical Skills:
-✅ Python (Pandas, NumPy, Scikit-learn, Statsmodels, Prophet)
-✅ Time-series analysis and forecasting
-✅ Statistical modeling (ARIMA, seasonal decomposition)
-✅ Machine learning (model selection, evaluation, validation)
-✅ Feature engineering (GDD, domain-specific metrics)
-✅ Data visualization (Matplotlib, Seaborn, Plotly)
-✅ Web development (Streamlit dashboard)
-✅ Git/GitHub version control
+ Python (Pandas, NumPy, Scikit-learn, Statsmodels, Prophet)
+ Time-series analysis and forecasting
+ Statistical modeling (ARIMA, seasonal decomposition)
+ Machine learning (model selection, evaluation, validation)
+ Feature engineering (GDD, domain-specific metrics)
+ Data visualization (Matplotlib, Seaborn, Plotly)
+ Web development (Streamlit dashboard)
+ Git/GitHub version control
 
 Business Skills:
-✅ Problem framing and stakeholder communication
-✅ ROI analysis and economic impact assessment
-✅ Domain knowledge (agriculture, weather patterns)
-✅ Documentation for technical and non-technical audiences
-✅ End-to-end project delivery
+ Problem framing and stakeholder communication
+ ROI analysis and economic impact assessment
+ Domain knowledge (agriculture, weather patterns)
+ Documentation for technical and non-technical audiences
+ End-to-end project delivery
 
 ================================================================================
 HOW TO USE THIS PROJECT
 ================================================================================
 
 1. Quick Start:
-   - Read QUICKSTART.md for 5-minute setup
-   - Run: streamlit run app.py
+ - Read QUICKSTART.md for 5-minute setup
+ - Run: streamlit run app.py
 
 2. For Recruiters/Hiring Managers:
-   - Read RESULTS_SUMMARY.md (non-technical explanation)
-   - View visualizations in figures/ folder
-   - Check LinkedIn: https://www.linkedin.com/in/jae-m-9a492636/
+ - Read RESULTS_SUMMARY.md (non-technical explanation)
+ - View visualizations in figures/ folder
+ - Check LinkedIn: https://www.linkedin.com/in/jae-m-9a492636/
 
 3. For Technical Review:
-   - Read METHODOLOGY.md (detailed technical approach)
-   - Review code in 01, 02, 03 scripts
-   - Check model_comparison_results.csv for metrics
+ - Read METHODOLOGY.md (detailed technical approach)
+ - Review code in 01, 02, 03 scripts
+ - Check model_comparison_results.csv for metrics
 
 4. For Deployment:
-   - Read DEPLOYMENT.md (step-by-step instructions)
-   - Deploy to Streamlit Cloud (free hosting)
-   - Or use Docker/AWS/Heroku
+ - Read DEPLOYMENT.md (step-by-step instructions)
+ - Deploy to Streamlit Cloud (free hosting)
+ - Or use Docker/AWS/Heroku
 
 ================================================================================
 BUSINESS IMPACT
@@ -155,9 +155,9 @@ CONTACT
 Jae Mwangi
 Data Scientist | Michigan State University - Enviroweather
 
-📧 Email: janomwangi@gmail.com
-💼 LinkedIn: https://www.linkedin.com/in/jae-m-9a492636/
-🐙 GitHub: https://github.com/Jae15
-🌐 Portfolio: https://TBD
+ Email: janomwangi@gmail.com
+ LinkedIn: https://www.linkedin.com/in/jae-m-9a492636/
+ GitHub: https://github.com/Jae15
+ Portfolio: https://TBD
 
 ================================================================================

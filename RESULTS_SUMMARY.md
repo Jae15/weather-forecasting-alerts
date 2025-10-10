@@ -1,9 +1,9 @@
 # Project Results Summary
 ## Weather Forecasting & Agricultural Alert System
 
-**Author**: Jae Mwangi  
-**Project Duration**: October 2025  
-**Data Source**: Michigan Automated Weather Network (MAWN)  
+**Author**: Jae Mwangi 
+**Project Duration**: October 2025 
+**Data Source**: Michigan Automated Weather Network (MAWN) 
 **Business Context**: Agricultural Decision Support
 
 ---
@@ -66,23 +66,23 @@ The system continuously monitors forecasts and automatically generates alerts wh
 
 #### **Alert Types**:
 
-**🥶 Frost Warnings** (HIGH Priority)
+** Frost Warnings** (HIGH Priority)
 - Triggered when: Temperature drops below 0°C (32°F)
 - Why it matters: Frost kills sensitive crops and damages fruit trees
 - Action: Cover crops, delay planting, protect vulnerable plants
 - **Result**: Generated 55 frost alerts in test period with 27-day average lead time
 
-**🔥 Heat Stress Alerts** (MEDIUM Priority)
+** Heat Stress Alerts** (MEDIUM Priority)
 - Triggered when: Temperature exceeds 30°C (86°F)
 - Why it matters: Reduces crop growth and increases water needs
 - Action: Increase irrigation, monitor crop health
 
-**🦠 Disease Risk Warnings** (HIGH Priority)
+** Disease Risk Warnings** (HIGH Priority)
 - Triggered when: High humidity (>90%) + moderate temperature (15-25°C)
 - Why it matters: Perfect conditions for fungal diseases like late blight
 - Action: Apply preventive treatments, increase monitoring
 
-**🌧️ Heavy Rain Alerts** (HIGH Priority)
+** Heavy Rain Alerts** (HIGH Priority)
 - Triggered when: Precipitation exceeds 25mm (1 inch)
 - Why it matters: Flooding, erosion, delays field work
 - Action: Check drainage, postpone operations
@@ -260,30 +260,30 @@ Created agricultural-specific metrics:
 ## Skills Demonstrated
 
 ### Data Science & Machine Learning
-✅ **Time-Series Forecasting**: ARIMA, Prophet, seasonal decomposition  
-✅ **Model Evaluation**: MAE, RMSE, residual analysis, cross-validation  
-✅ **Feature Engineering**: Domain-specific metrics (GDD, cumulative precipitation)  
-✅ **Model Selection**: Systematic comparison of multiple approaches  
-✅ **Hyperparameter Tuning**: Grid search for optimal ARIMA parameters  
+ **Time-Series Forecasting**: ARIMA, Prophet, seasonal decomposition 
+ **Model Evaluation**: MAE, RMSE, residual analysis, cross-validation 
+ **Feature Engineering**: Domain-specific metrics (GDD, cumulative precipitation) 
+ **Model Selection**: Systematic comparison of multiple approaches 
+ **Hyperparameter Tuning**: Grid search for optimal ARIMA parameters 
 
 ### Programming & Software Engineering
-✅ **Python**: Pandas, NumPy, Scikit-learn, Statsmodels, Prophet  
-✅ **Data Visualization**: Matplotlib, Seaborn, Plotly  
-✅ **Web Development**: Streamlit dashboard with interactive features  
-✅ **Code Quality**: Modular, documented, reproducible  
-✅ **Version Control**: Git/GitHub ready  
+ **Python**: Pandas, NumPy, Scikit-learn, Statsmodels, Prophet 
+ **Data Visualization**: Matplotlib, Seaborn, Plotly 
+ **Web Development**: Streamlit dashboard with interactive features 
+ **Code Quality**: Modular, documented, reproducible 
+ **Version Control**: Git/GitHub ready 
 
 ### Domain Knowledge & Business Acumen
-✅ **Agricultural Science**: Understanding of crop risks, GDD, disease conditions  
-✅ **Stakeholder Communication**: Translated technical results for farmers  
-✅ **Business Impact**: Quantified ROI and economic value  
-✅ **Problem Framing**: Identified real user needs and designed solution accordingly  
+ **Agricultural Science**: Understanding of crop risks, GDD, disease conditions 
+ **Stakeholder Communication**: Translated technical results for farmers 
+ **Business Impact**: Quantified ROI and economic value 
+ **Problem Framing**: Identified real user needs and designed solution accordingly 
 
 ### Project Management & Documentation
-✅ **End-to-End Delivery**: From data collection to deployed dashboard  
-✅ **Documentation**: README, methodology, deployment guide, results summary  
-✅ **Reproducibility**: Complete instructions for replication  
-✅ **Presentation**: Portfolio-ready with visualizations and explanations  
+ **End-to-End Delivery**: From data collection to deployed dashboard 
+ **Documentation**: README, methodology, deployment guide, results summary 
+ **Reproducibility**: Complete instructions for replication 
+ **Presentation**: Portfolio-ready with visualizations and explanations 
 
 ---
 
@@ -331,13 +331,13 @@ The **70% improvement in forecast accuracy** and **27-day advance warning** demo
 
 ## Contact & Portfolio
 
-**Jae Mwangi**  
+**Jae Mwangi** 
 Data Scientist | Michigan State University - Enviroweather
 
-📧 **Email**: janomwangi@gmail.com  
-💼 **LinkedIn**: [linkedin.com/in/jae-m-9a492636](https://www.linkedin.com/in/jae-m-9a492636/)  
-🐙 **GitHub**: [github.com/Jae15](https://github.com/Jae15)  
-🌐 **Live Dashboard**: [View Demo](https://TBD - Deploy to get URL)  
+ **Email**: janomwangi@gmail.com 
+ **LinkedIn**: [linkedin.com/in/jae-m-9a492636](https://www.linkedin.com/in/jae-m-9a492636/) 
+ **GitHub**: [github.com/Jae15](https://github.com/Jae15) 
+ **Live Dashboard**: [View Demo](https://TBD - Deploy to get URL) 
 
 **Additional Portfolio Projects**:
 - Project 2: Microclimate Clustering & Risk Segmentation *(coming soon)*

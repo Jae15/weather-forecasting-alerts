@@ -1,7 +1,7 @@
 # Deployment Guide
 
-**Project**: Weather Forecasting & Agricultural Alert System  
-**Author**: Jae Mwangi  
+**Project**: Weather Forecasting & Agricultural Alert System 
+**Author**: Jae Mwangi 
 **Last Updated**: October 2025
 
 ---
@@ -154,10 +154,10 @@ The dashboard will automatically open in your browser at `http://localhost:8501`
 
 ### Dashboard Features
 
-- **📊 Overview**: Project summary, key metrics, temperature time series
-- **📈 Model Performance**: Model comparison, metrics, methodology details
-- **🔔 Alert System**: Alert timeline, threshold configuration, recent alerts
-- **🔍 Data Explorer**: Interactive data visualization, statistics, raw data download
+- ** Overview**: Project summary, key metrics, temperature time series
+- ** Model Performance**: Model comparison, metrics, methodology details
+- ** Alert System**: Alert timeline, threshold configuration, recent alerts
+- ** Data Explorer**: Interactive data visualization, statistics, raw data download
 
 ### Stopping the Dashboard
 
@@ -172,18 +172,18 @@ Streamlit Cloud provides **free hosting** for public Streamlit apps.
 ### Step 1: Prepare Your Repository
 
 1. **Ensure all files are committed to Git**:
-   ```bash
-   git add .
-   git commit -m "Prepare for deployment"
-   git push origin main
-   ```
+ ```bash
+ git add .
+ git commit -m "Prepare for deployment"
+ git push origin main
+ ```
 
 2. **Verify `requirements.txt` is in the root directory**
 
 3. **Ensure data files are included**:
-   - `daily_weather_aetna.csv`
-   - `model_comparison_results.csv`
-   - `generated_alerts.csv`
+ - `daily_weather_aetna.csv`
+ - `model_comparison_results.csv`
+ - `generated_alerts.csv`
 
 ### Step 2: Deploy to Streamlit Cloud
 
@@ -204,7 +204,7 @@ Streamlit Cloud provides **free hosting** for public Streamlit apps.
 Add your live app URL to the README:
 
 ```markdown
-**[🌐 View Interactive Dashboard](https://your-app.streamlit.app)**
+**[ View Interactive Dashboard](https://your-app.streamlit.app)**
 ```
 
 ### Troubleshooting Streamlit Cloud
@@ -214,9 +214,9 @@ Add your live app URL to the README:
 
 **Issue**: App crashes with memory error
 - **Solution**: Streamlit Cloud free tier has 1GB RAM limit. Consider:
-  - Reducing data size
-  - Using cached data loading (`@st.cache_data`)
-  - Upgrading to paid tier
+ - Reducing data size
+ - Using cached data loading (`@st.cache_data`)
+ - Upgrading to paid tier
 
 **Issue**: Data files not found
 - **Solution**: Ensure CSV files are committed to Git (not in `.gitignore`)
@@ -228,67 +228,67 @@ Add your live app URL to the README:
 ### Option 1: Heroku
 
 1. **Create `Procfile`**:
-   ```
-   web: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
-   ```
+ ```
+ web: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+ ```
 
 2. **Create `setup.sh`**:
-   ```bash
-   mkdir -p ~/.streamlit/
-   echo "[server]
-   headless = true
-   port = $PORT
-   enableCORS = false
-   " > ~/.streamlit/config.toml
-   ```
+ ```bash
+ mkdir -p ~/.streamlit/
+ echo "[server]
+ headless = true
+ port = $PORT
+ enableCORS = false
+ " > ~/.streamlit/config.toml
+ ```
 
 3. **Deploy**:
-   ```bash
-   heroku create your-app-name
-   git push heroku main
-   ```
+ ```bash
+ heroku create your-app-name
+ git push heroku main
+ ```
 
 ### Option 2: AWS EC2
 
 1. **Launch EC2 instance** (t2.medium recommended)
 2. **SSH into instance**:
-   ```bash
-   ssh -i your-key.pem ubuntu@your-ec2-ip
-   ```
+ ```bash
+ ssh -i your-key.pem ubuntu@your-ec2-ip
+ ```
 3. **Install dependencies**:
-   ```bash
-   sudo apt update
-   sudo apt install python3.11 python3.11-venv
-   ```
+ ```bash
+ sudo apt update
+ sudo apt install python3.11 python3.11-venv
+ ```
 4. **Clone repo and run**:
-   ```bash
-   git clone https://github.com/Jae15/weather-forecasting-alerts.git
-   cd weather-forecasting-alerts
-   python3.11 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   streamlit run app.py --server.port=8501 --server.address=0.0.0.0
-   ```
+ ```bash
+ git clone https://github.com/Jae15/weather-forecasting-alerts.git
+ cd weather-forecasting-alerts
+ python3.11 -m venv venv
+ source venv/bin/activate
+ pip install -r requirements.txt
+ streamlit run app.py --server.port=8501 --server.address=0.0.0.0
+ ```
 5. **Configure security group** to allow port 8501
 
 ### Option 3: Docker
 
 1. **Create `Dockerfile`**:
-   ```dockerfile
-   FROM python:3.11-slim
-   WORKDIR /app
-   COPY requirements.txt .
-   RUN pip install -r requirements.txt
-   COPY . .
-   EXPOSE 8501
-   CMD ["streamlit", "run", "app.py"]
-   ```
+ ```dockerfile
+ FROM python:3.11-slim
+ WORKDIR /app
+ COPY requirements.txt .
+ RUN pip install -r requirements.txt
+ COPY . .
+ EXPOSE 8501
+ CMD ["streamlit", "run", "app.py"]
+ ```
 
 2. **Build and run**:
-   ```bash
-   docker build -t weather-forecasting-app .
-   docker run -p 8501:8501 weather-forecasting-app
-   ```
+ ```bash
+ docker build -t weather-forecasting-app .
+ docker run -p 8501:8501 weather-forecasting-app
+ ```
 
 ---
 
@@ -320,8 +320,8 @@ pip install prophet
 **Solution**:
 ```bash
 # Ensure virtual environment is activated
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+source venv/bin/activate # macOS/Linux
+venv\Scripts\activate # Windows
 
 # Reinstall streamlit
 pip install streamlit
@@ -353,7 +353,7 @@ python 03_alert_system.py
 ```bash
 # Add to top of script
 import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
+matplotlib.use('Agg') # Use non-interactive backend
 ```
 
 #### Issue: Out of memory errors
@@ -373,35 +373,35 @@ matplotlib.use('Agg')  # Use non-interactive backend
 ### For Faster Model Training
 
 1. **Reduce ARIMA grid search space**:
-   ```python
-   p_values = [1, 2, 3]  # Instead of [0, 1, 2, 3, 5]
-   q_values = [1, 2, 3]
-   ```
+ ```python
+ p_values = [1, 2, 3] # Instead of [0, 1, 2, 3, 5]
+ q_values = [1, 2, 3]
+ ```
 
 2. **Use parallel processing for Prophet**:
-   ```python
-   from prophet import Prophet
-   model = Prophet(mcmc_samples=0)  # Disable MCMC for speed
-   ```
+ ```python
+ from prophet import Prophet
+ model = Prophet(mcmc_samples=0) # Disable MCMC for speed
+ ```
 
 3. **Cache Streamlit data loading**:
-   ```python
-   @st.cache_data
-   def load_data():
-       return pd.read_csv('daily_weather_aetna.csv')
-   ```
+ ```python
+ @st.cache_data
+ def load_data():
+ return pd.read_csv('daily_weather_aetna.csv')
+ ```
 
 ### For Smaller File Sizes
 
 1. **Compress figures**:
-   ```python
-   plt.savefig('figure.png', dpi=150)  # Instead of dpi=300
-   ```
+ ```python
+ plt.savefig('figure.png', dpi=150) # Instead of dpi=300
+ ```
 
 2. **Use Parquet instead of CSV**:
-   ```python
-   df.to_parquet('data.parquet')  # Smaller and faster
-   ```
+ ```python
+ df.to_parquet('data.parquet') # Smaller and faster
+ ```
 
 ---
 
@@ -413,15 +413,15 @@ To retrain models with new data:
 
 1. **Update data files** with latest MAWN data
 2. **Re-run analysis scripts**:
-   ```bash
-   python 01_timeseries_forecasting.py
-   python 02_model_building.py
-   python 03_alert_system.py
-   ```
+ ```bash
+ python 01_timeseries_forecasting.py
+ python 02_model_building.py
+ python 03_alert_system.py
+ ```
 3. **Restart Streamlit app**:
-   ```bash
-   streamlit run app.py
-   ```
+ ```bash
+ streamlit run app.py
+ ```
 
 ### Monitoring Forecast Accuracy
 
@@ -433,8 +433,8 @@ actual = load_actual_data()
 forecast = load_forecast_data()
 mae = mean_absolute_error(actual, forecast)
 
-if mae > 5.0:  # Alert if accuracy degrades
-    send_alert("Model accuracy degraded: MAE = {mae:.2f}")
+if mae > 5.0: # Alert if accuracy degrades
+ send_alert("Model accuracy degraded: MAE = {mae:.2f}")
 ```
 
 ---
@@ -449,6 +449,6 @@ For issues or questions:
 
 ---
 
-**Author**: Jae Mwangi  
+**Author**: Jae Mwangi 
 **Last Updated**: October 2025
 

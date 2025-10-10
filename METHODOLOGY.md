@@ -1,7 +1,7 @@
 # Methodology: Weather Forecasting & Agricultural Alert System
 
-**Author**: Jae Mwangi  
-**Date**: October 2025  
+**Author**: Jae Mwangi 
+**Date**: October 2025 
 **Project**: Time-Series Forecasting for Agricultural Decision Support
 
 ---
@@ -44,9 +44,9 @@
 **Temporal Aggregation**: Hourly → Daily
 - **Method**: Group by date, calculate min/max/mean/sum
 - **Rationale**: 
-  - Reduces noise and measurement errors
-  - Aligns with agricultural decision-making timescales
-  - Standard practice for crop planning (daily forecasts)
+ - Reduces noise and measurement errors
+ - Aligns with agricultural decision-making timescales
+ - Standard practice for crop planning (daily forecasts)
 - **Result**: 2,332 daily records
 
 ### 1.3 Data Quality Assessment
@@ -72,21 +72,21 @@
 **Derived Variables**:
 
 1. **Growing Degree Days (GDD)**
-   - Formula: `GDD = max(0, T_mean - T_base)`
-   - Base temperature: 10°C (standard for many crops)
-   - Purpose: Crop development tracking
+ - Formula: `GDD = max(0, T_mean - T_base)`
+ - Base temperature: 10°C (standard for many crops)
+ - Purpose: Crop development tracking
 
 2. **Temperature Range**
-   - Formula: `Range = T_max - T_min`
-   - Purpose: Diurnal variation indicator
+ - Formula: `Range = T_max - T_min`
+ - Purpose: Diurnal variation indicator
 
 3. **Cumulative Precipitation**
-   - Rolling sum over 7, 14, 30 days
-   - Purpose: Soil moisture proxy
+ - Rolling sum over 7, 14, 30 days
+ - Purpose: Soil moisture proxy
 
 4. **Leaf Wetness Duration**
-   - Sum of hourly leaf wetness readings
-   - Purpose: Disease risk assessment
+ - Sum of hourly leaf wetness readings
+ - Purpose: Disease risk assessment
 
 ### 1.5 Train/Validation/Test Split
 
@@ -161,9 +161,9 @@
 
 **Stationarity Testing**:
 - **Augmented Dickey-Fuller (ADF) Test**
-  - Original series: p-value = 0.160 (non-stationary)
-  - Differenced series: p-value < 0.001 (stationary)
-  - **Conclusion**: d = 1 (first-order differencing required)
+ - Original series: p-value = 0.160 (non-stationary)
+ - Differenced series: p-value < 0.001 (stationary)
+ - **Conclusion**: d = 1 (first-order differencing required)
 
 **ACF/PACF Analysis**:
 - ACF: Gradual decay (no clear cutoff)
@@ -174,12 +174,12 @@
 - **Method**: Grid search over (p, d, q) combinations
 - **Criterion**: Akaike Information Criterion (AIC)
 - **Search space**: 
-  - p ∈ {0, 1, 2, 3, 5}
-  - d = 1 (from stationarity test)
-  - q ∈ {0, 1, 2, 3, 5}
+ - p ∈ {0, 1, 2, 3, 5}
+ - d = 1 (from stationarity test)
+ - q ∈ {0, 1, 2, 3, 5}
 - **Optimal model**: ARIMA(5, 1, 3)
-  - AIC: 10,234.56
-  - 8 parameters estimated
+ - AIC: 10,234.56
+ - 8 parameters estimated
 
 **Model Diagnostics**:
 - Ljung-Box test: No significant autocorrelation in residuals
@@ -196,20 +196,20 @@
 **Model Configuration**:
 
 1. **Trend Component**:
-   - Piecewise linear trend
-   - Automatic changepoint detection
-   - Changepoint prior scale: 0.05 (default)
+ - Piecewise linear trend
+ - Automatic changepoint detection
+ - Changepoint prior scale: 0.05 (default)
 
 2. **Seasonality Components**:
-   - **Yearly seasonality**: Enabled (Fourier order = 10)
-     - Captures annual temperature cycle
-   - **Weekly seasonality**: Enabled (Fourier order = 3)
-     - Captures day-of-week patterns (if any)
-   - **Daily seasonality**: Disabled (using daily data)
+ - **Yearly seasonality**: Enabled (Fourier order = 10)
+ - Captures annual temperature cycle
+ - **Weekly seasonality**: Enabled (Fourier order = 3)
+ - Captures day-of-week patterns (if any)
+ - **Daily seasonality**: Disabled (using daily data)
 
 3. **Uncertainty Intervals**:
-   - Interval width: 95%
-   - Accounts for trend uncertainty and observation noise
+ - Interval width: 95%
+ - Accounts for trend uncertainty and observation noise
 
 **Training Process**:
 - Optimizer: L-BFGS (default)
@@ -222,8 +222,8 @@
 - **Weekly seasonality**: Minimal effect (as expected for weather)
 
 **Performance**:
-- Validation MAE: 3.50°C ✅
-- Test MAE: 3.56°C ✅
+- Validation MAE: 3.50°C 
+- Test MAE: 3.56°C 
 - **Advantage**: Excellent capture of seasonal patterns
 
 ### 3.3 Baseline Model (Persistence)
@@ -244,7 +244,7 @@
 
 | Model | Test MAE (°C) | Test RMSE (°C) | Improvement vs Baseline |
 |-------|---------------|----------------|-------------------------|
-| **Prophet** | **3.56** | **4.61** | **70% reduction** ✅ |
+| **Prophet** | **3.56** | **4.61** | **70% reduction** |
 | ARIMA(5,1,3) | 12.18 | 14.40 | -1% (worse) |
 | Baseline | 12.09 | 14.28 | - |
 
@@ -264,60 +264,60 @@
 - **Condition**: Temperature < 0°C
 - **Severity**: HIGH
 - **Agricultural Impact**: 
-  - Crop tissue damage
-  - Delayed planting
-  - Yield loss
+ - Crop tissue damage
+ - Delayed planting
+ - Yield loss
 - **Recommended Actions**:
-  - Cover sensitive crops
-  - Delay planting of frost-sensitive species
-  - Monitor forecasts closely
+ - Cover sensitive crops
+ - Delay planting of frost-sensitive species
+ - Monitor forecasts closely
 
 **2. Heat Stress**
 - **Condition**: Temperature > 30°C
 - **Severity**: MEDIUM
 - **Agricultural Impact**:
-  - Reduced photosynthesis
-  - Increased water demand
-  - Potential yield reduction
+ - Reduced photosynthesis
+ - Increased water demand
+ - Potential yield reduction
 - **Recommended Actions**:
-  - Increase irrigation frequency
-  - Monitor crop health
-  - Adjust harvest timing if needed
+ - Increase irrigation frequency
+ - Monitor crop health
+ - Adjust harvest timing if needed
 
 **3. High Disease Risk**
 - **Condition**: Humidity > 90% AND Temperature 15-25°C
 - **Severity**: HIGH
 - **Agricultural Impact**:
-  - Fungal disease outbreaks (late blight, powdery mildew)
-  - Bacterial infections
-  - Rapid disease spread
+ - Fungal disease outbreaks (late blight, powdery mildew)
+ - Bacterial infections
+ - Rapid disease spread
 - **Recommended Actions**:
-  - Apply preventive fungicides
-  - Increase scouting frequency
-  - Improve air circulation
+ - Apply preventive fungicides
+ - Increase scouting frequency
+ - Improve air circulation
 
 **4. Moderate Disease Risk**
 - **Condition**: Humidity > 85% AND Temperature 10-30°C
 - **Severity**: MEDIUM
 - **Agricultural Impact**:
-  - Elevated disease pressure
-  - Favorable conditions for pathogen development
+ - Elevated disease pressure
+ - Favorable conditions for pathogen development
 - **Recommended Actions**:
-  - Increase field monitoring
-  - Prepare for potential treatment
+ - Increase field monitoring
+ - Prepare for potential treatment
 
 **5. Heavy Rain**
 - **Condition**: Precipitation > 25mm
 - **Severity**: HIGH
 - **Agricultural Impact**:
-  - Soil erosion
-  - Flooding
-  - Delayed field operations
-  - Nutrient leaching
+ - Soil erosion
+ - Flooding
+ - Delayed field operations
+ - Nutrient leaching
 - **Recommended Actions**:
-  - Check drainage systems
-  - Delay field operations (planting, spraying, harvest)
-  - Monitor for waterlogging
+ - Check drainage systems
+ - Delay field operations (planting, spraying, harvest)
+ - Monitor for waterlogging
 
 ### 4.2 Alert Generation Process
 
@@ -333,12 +333,12 @@
 
 **Step 3: Alert Creation**
 - Generate alert record with:
-  - Date of predicted event
-  - Alert type
-  - Severity level
-  - Descriptive message
-  - Lead time (days in advance)
-  - Recommended actions
+ - Date of predicted event
+ - Alert type
+ - Severity level
+ - Descriptive message
+ - Lead time (days in advance)
+ - Recommended actions
 
 **Step 4: Alert Delivery** (Simulated)
 - Sort alerts by severity and date
@@ -393,7 +393,7 @@
 
 **Prophet Residuals**:
 - Mean: 0.01°C (unbiased)
-- Std Dev: 4.5°C (much lower variability) ✅
+- Std Dev: 4.5°C (much lower variability) 
 - Distribution: Approximately normal with slight negative skew
 - Autocorrelation: Minimal (some structure in extreme events)
 
@@ -450,10 +450,10 @@
 **For Farmers**:
 - 3.56°C forecast error is acceptable for most agricultural decisions
 - Early warnings (27-day lead time) enable:
-  - Crop variety selection
-  - Planting date optimization
-  - Pest management preparation
-  - Resource allocation (irrigation, labor)
+ - Crop variety selection
+ - Planting date optimization
+ - Pest management preparation
+ - Resource allocation (irrigation, labor)
 
 **For Extension Services**:
 - Automated system reduces manual monitoring burden
@@ -519,8 +519,8 @@ The methodology is **reproducible, scalable, and operationally viable** for depl
 
 ---
 
-**Author**: Jae Mwangi  
-**Affiliation**: Michigan State University - Enviroweather  
-**Date**: October 2025  
+**Author**: Jae Mwangi 
+**Affiliation**: Michigan State University - Enviroweather 
+**Date**: October 2025 
 **Contact**: [LinkedIn](https://www.linkedin.com/in/jae-m-9a492636/)
 

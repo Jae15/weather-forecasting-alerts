@@ -58,3 +58,7 @@ output_*.log
 *.tmp
 *.bak
 
+# Private documents (interview prep, personal notes)
+PRIVATE*.md
+*PRIVATE*
+

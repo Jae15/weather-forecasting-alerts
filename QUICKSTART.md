@@ -9,7 +9,7 @@
 
 If the dashboard is already deployed:
 
-🌐 **[View Live Dashboard](https://your-app.streamlit.app)**
+ **[View Live Dashboard](https://your-app.streamlit.app)**
 
 ---
 
@@ -23,7 +23,7 @@ cd weather-forecasting-alerts
 
 # Create virtual environment
 python3.11 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate # On Windows: venv\Scripts\activate
 
 # Install packages
 pip install -r requirements.txt
@@ -63,25 +63,25 @@ streamlit run app.py
 
 ### Dashboard Pages:
 
-1. **📊 Overview**
-   - Project summary and key metrics
-   - Temperature time series visualization
-   - Data quality statistics
+1. ** Overview**
+ - Project summary and key metrics
+ - Temperature time series visualization
+ - Data quality statistics
 
-2. **📈 Model Performance**
-   - Comparison of ARIMA, Prophet, and Baseline models
-   - Accuracy metrics and visualizations
-   - Model methodology details
+2. ** Model Performance**
+ - Comparison of ARIMA, Prophet, and Baseline models
+ - Accuracy metrics and visualizations
+ - Model methodology details
 
-3. **🔔 Alert System**
-   - Active alerts and severity levels
-   - Alert timeline and history
-   - Threshold configuration
+3. ** Alert System**
+ - Active alerts and severity levels
+ - Alert timeline and history
+ - Threshold configuration
 
-4. **🔍 Data Explorer**
-   - Interactive data visualization
-   - Custom date range selection
-   - Downloadable datasets
+4. ** Data Explorer**
+ - Interactive data visualization
+ - Custom date range selection
+ - Downloadable datasets
 
 ---
 
@@ -113,19 +113,19 @@ streamlit run app.py
 
 ## Next Steps
 
-1. ✅ Explore the dashboard
-2. ✅ Read `RESULTS_SUMMARY.md` for business impact
-3. ✅ Review `METHODOLOGY.md` for technical details
-4. ✅ Check `DEPLOYMENT.md` to deploy to cloud
+1. Explore the dashboard
+2. Read `RESULTS_SUMMARY.md` for business impact
+3. Review `METHODOLOGY.md` for technical details
+4. Check `DEPLOYMENT.md` to deploy to cloud
 
 ---
 
 **Questions?** 
-- 📧 Email: janomwangi@gmail.com
-- 💼 LinkedIn: [Jae Mwangi](https://www.linkedin.com/in/jae-m-9a492636/)
-- 🐙 GitHub: [Open an issue](https://github.com/Jae15/weather-forecasting-alerts/issues)
+- Email: janomwangi@gmail.com
+- LinkedIn: [Jae Mwangi](https://www.linkedin.com/in/jae-m-9a492636/)
+- GitHub: [Open an issue](https://github.com/Jae15/weather-forecasting-alerts/issues)
 
 ---
 
-**Author**: Jae Mwangi  
+**Author**: Jae Mwangi 
 **Project**: Time-Series Forecasting for Agricultural Decision Support

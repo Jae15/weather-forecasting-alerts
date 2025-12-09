@@ -95,7 +95,7 @@ except Exception as e:
 # SIDEBAR
 # ============================================================================
 
-st.sidebar.image("https://via.placeholder.com/300x100/1f77b4/ffffff?text=MAWN+Forecasting", use_container_width=True)
+st.sidebar.image("https://via.placeholder.com/300x100/1f77b4/ffffff?text=MAWN+Forecasting", use_column_width=True)
 st.sidebar.title("Navigation")
 
 page = st.sidebar.radio(

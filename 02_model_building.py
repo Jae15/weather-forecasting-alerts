@@ -1,7 +1,11 @@
 #!/usr/bin/env python3.11
 """
-PROJECT 1: TIME-SERIES FORECASTING - MODEL BUILDING & EVALUATION
-================================================================
+INDEPENDENT PORTFOLIO PROJECT: TIME-SERIES FORECASTING - MODEL BUILDING & EVALUATION
+====================================================================================
+
+Author: Jae Mwangi
+Project: Independent portfolio project (not affiliated with MSU/Enviroweather)
+Data Source: MAWN (publicly available data, used with permission)
 
 This script builds and evaluates ARIMA and Prophet models for temperature forecasting.
 """
@@ -89,9 +93,9 @@ for p, d, q in itertools.product(p_values, d_values, q_values):
     except Exception as e:
         continue
 
-print(f"\n✓ Grid search completed")
-print(f"✓ Best parameters: ARIMA{best_params}")
-print(f"✓ Best AIC: {best_aic:.2f}")
+print(f"\n Grid search completed")
+print(f" Best parameters: ARIMA{best_params}")
+print(f" Best AIC: {best_aic:.2f}")
 
 # Show top 5 models
 results_df = pd.DataFrame(results_grid).sort_values('AIC').head(10)
@@ -105,7 +109,7 @@ print("-" * 80)
 arima_model = ARIMA(temp_train, order=best_params)
 arima_fitted = arima_model.fit()
 
-print(f"✓ ARIMA{best_params} model trained")
+print(f" ARIMA{best_params} model trained")
 print(f"\nModel Summary:")
 print(arima_fitted.summary())
 
@@ -121,9 +125,9 @@ mae_val = mean_absolute_error(temp_val, arima_forecast_val)
 rmse_val = np.sqrt(mean_squared_error(temp_val, arima_forecast_val))
 mape_val = mean_absolute_percentage_error(temp_val, arima_forecast_val) * 100
 
-print(f"✓ Validation Set Performance:")
-print(f"  - MAE:  {mae_val:.3f}°C")
-print(f"  - RMSE: {rmse_val:.3f}°C")
+print(f" Validation Set Performance:")
+print(f"  - MAE:  {mae_val:.3f}degC")
+print(f"  - RMSE: {rmse_val:.3f}degC")
 print(f"  - MAPE: {mape_val:.2f}%")
 
 print("\n[5.4] ARIMA Forecasting - Test Set")
@@ -143,9 +147,9 @@ mae_test = mean_absolute_error(temp_test, arima_forecast_test)
 rmse_test = np.sqrt(mean_squared_error(temp_test, arima_forecast_test))
 mape_test = mean_absolute_percentage_error(temp_test, arima_forecast_test) * 100
 
-print(f"✓ Test Set Performance:")
-print(f"  - MAE:  {mae_test:.3f}°C")
-print(f"  - RMSE: {rmse_test:.3f}°C")
+print(f" Test Set Performance:")
+print(f"  - MAE:  {mae_test:.3f}degC")
+print(f"  - RMSE: {rmse_test:.3f}degC")
 print(f"  - MAPE: {mape_test:.2f}%")
 
 # ============================================================================
@@ -165,7 +169,7 @@ prophet_train = train_data[['date', 'atmp_mean']].rename(columns={'date': 'ds', 
 prophet_val = val_data[['date', 'atmp_mean']].rename(columns={'date': 'ds', 'atmp_mean': 'y'})
 prophet_test = test_data[['date', 'atmp_mean']].rename(columns={'date': 'ds', 'atmp_mean': 'y'})
 
-print(f"✓ Prophet training data: {len(prophet_train)} days")
+print(f" Prophet training data: {len(prophet_train)} days")
 
 print("\n[6.2] Training Prophet Model")
 print("-" * 80)
@@ -185,7 +189,7 @@ prophet_model = Prophet(
 )
 
 prophet_model.fit(prophet_train)
-print("✓ Prophet model trained")
+print(" Prophet model trained")
 
 print("\n[6.3] Prophet Forecasting - Validation Set")
 print("-" * 80)
@@ -202,9 +206,9 @@ mae_prophet_val = mean_absolute_error(temp_val, prophet_pred_val)
 rmse_prophet_val = np.sqrt(mean_squared_error(temp_val, prophet_pred_val))
 mape_prophet_val = mean_absolute_percentage_error(temp_val, prophet_pred_val) * 100
 
-print(f"✓ Validation Set Performance:")
-print(f"  - MAE:  {mae_prophet_val:.3f}°C")
-print(f"  - RMSE: {rmse_prophet_val:.3f}°C")
+print(f" Validation Set Performance:")
+print(f"  - MAE:  {mae_prophet_val:.3f}degC")
+print(f"  - RMSE: {rmse_prophet_val:.3f}degC")
 print(f"  - MAPE: {mape_prophet_val:.2f}%")
 
 print("\n[6.4] Prophet Forecasting - Test Set")
@@ -233,9 +237,9 @@ mae_prophet_test = mean_absolute_error(temp_test, prophet_pred_test)
 rmse_prophet_test = np.sqrt(mean_squared_error(temp_test, prophet_pred_test))
 mape_prophet_test = mean_absolute_percentage_error(temp_test, prophet_pred_test) * 100
 
-print(f"✓ Test Set Performance:")
-print(f"  - MAE:  {mae_prophet_test:.3f}°C")
-print(f"  - RMSE: {rmse_prophet_test:.3f}°C")
+print(f" Test Set Performance:")
+print(f"  - MAE:  {mae_prophet_test:.3f}degC")
+print(f"  - RMSE: {rmse_prophet_test:.3f}degC")
 print(f"  - MAPE: {mape_prophet_test:.2f}%")
 
 # ============================================================================
@@ -255,9 +259,9 @@ mae_baseline_val = mean_absolute_error(temp_val, baseline_pred_val)
 rmse_baseline_val = np.sqrt(mean_squared_error(temp_val, baseline_pred_val))
 mape_baseline_val = mean_absolute_percentage_error(temp_val, baseline_pred_val) * 100
 
-print(f"\n✓ Validation Set Performance:")
-print(f"  - MAE:  {mae_baseline_val:.3f}°C")
-print(f"  - RMSE: {rmse_baseline_val:.3f}°C")
+print(f"\n Validation Set Performance:")
+print(f"  - MAE:  {mae_baseline_val:.3f}degC")
+print(f"  - RMSE: {rmse_baseline_val:.3f}degC")
 print(f"  - MAPE: {mape_baseline_val:.2f}%")
 
 # Test set baseline
@@ -268,9 +272,9 @@ mae_baseline_test = mean_absolute_error(temp_test, baseline_pred_test)
 rmse_baseline_test = np.sqrt(mean_squared_error(temp_test, baseline_pred_test))
 mape_baseline_test = mean_absolute_percentage_error(temp_test, baseline_pred_test) * 100
 
-print(f"\n✓ Test Set Performance:")
-print(f"  - MAE:  {mae_baseline_test:.3f}°C")
-print(f"  - RMSE: {rmse_baseline_test:.3f}°C")
+print(f"\n Test Set Performance:")
+print(f"  - MAE:  {mae_baseline_test:.3f}degC")
+print(f"  - RMSE: {rmse_baseline_test:.3f}degC")
 print(f"  - MAPE: {mape_baseline_test:.2f}%")
 
 # ============================================================================
@@ -297,12 +301,12 @@ print(comparison_results.to_string(index=False))
 
 # Save results
 comparison_results.to_csv('model_comparison_results.csv', index=False)
-print("\n✓ Saved: model_comparison_results.csv")
+print("\n Saved: model_comparison_results.csv")
 
 # Determine best model
 best_model_idx = comparison_results['Test_MAE'].idxmin()
 best_model_name = comparison_results.loc[best_model_idx, 'Model']
-print(f"\n✓ Best Model (by Test MAE): {best_model_name}")
+print(f"\n Best Model (by Test MAE): {best_model_name}")
 
 # ============================================================================
 # SECTION 9: VISUALIZATION OF FORECASTS
@@ -320,7 +324,7 @@ axes[0].plot(test_data['date'], temp_test.values, label='Actual', linewidth=2, c
 axes[0].plot(test_data['date'], arima_forecast_test, label=f'ARIMA{best_params}', linewidth=2, alpha=0.8)
 axes[0].plot(test_data['date'], prophet_pred_test, label='Prophet', linewidth=2, alpha=0.8)
 axes[0].plot(test_data['date'], baseline_pred_test, label='Baseline', linewidth=2, alpha=0.6, linestyle='--')
-axes[0].set_ylabel('Temperature (°C)')
+axes[0].set_ylabel('Temperature (degC)')
 axes[0].set_title('Temperature Forecast Comparison - Test Set (2025)', fontsize=12, fontweight='bold')
 axes[0].legend(loc='best')
 axes[0].grid(True, alpha=0.3)
@@ -333,7 +337,7 @@ axes[1].plot(test_data['date'][:zoom_days], arima_forecast_test[:zoom_days],
              label=f'ARIMA{best_params}', linewidth=2, alpha=0.8, marker='s')
 axes[1].plot(test_data['date'][:zoom_days], prophet_pred_test[:zoom_days], 
              label='Prophet', linewidth=2, alpha=0.8, marker='^')
-axes[1].set_ylabel('Temperature (°C)')
+axes[1].set_ylabel('Temperature (degC)')
 axes[1].set_xlabel('Date')
 axes[1].set_title(f'Zoomed View - First {zoom_days} Days', fontsize=12, fontweight='bold')
 axes[1].legend(loc='best')
@@ -341,7 +345,7 @@ axes[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('figures/04_forecast_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/04_forecast_comparison.png")
+print(" Saved: figures/04_forecast_comparison.png")
 plt.close()
 
 # Plot 2: Residual analysis
@@ -351,13 +355,13 @@ fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 arima_residuals = temp_test.values - arima_forecast_test
 axes[0, 0].plot(test_data['date'], arima_residuals, marker='o', linestyle='-', alpha=0.7)
 axes[0, 0].axhline(y=0, color='r', linestyle='--')
-axes[0, 0].set_ylabel('Residual (°C)')
+axes[0, 0].set_ylabel('Residual (degC)')
 axes[0, 0].set_title(f'ARIMA{best_params} Residuals', fontweight='bold')
 axes[0, 0].grid(True, alpha=0.3)
 
 axes[0, 1].hist(arima_residuals, bins=30, alpha=0.7, edgecolor='black')
 axes[0, 1].axvline(x=0, color='r', linestyle='--')
-axes[0, 1].set_xlabel('Residual (°C)')
+axes[0, 1].set_xlabel('Residual (degC)')
 axes[0, 1].set_ylabel('Frequency')
 axes[0, 1].set_title(f'ARIMA{best_params} Residual Distribution', fontweight='bold')
 axes[0, 1].grid(True, alpha=0.3)
@@ -366,21 +370,21 @@ axes[0, 1].grid(True, alpha=0.3)
 prophet_residuals = temp_test.values - prophet_pred_test
 axes[1, 0].plot(test_data['date'], prophet_residuals, marker='o', linestyle='-', alpha=0.7, color='orange')
 axes[1, 0].axhline(y=0, color='r', linestyle='--')
-axes[1, 0].set_ylabel('Residual (°C)')
+axes[1, 0].set_ylabel('Residual (degC)')
 axes[1, 0].set_xlabel('Date')
 axes[1, 0].set_title('Prophet Residuals', fontweight='bold')
 axes[1, 0].grid(True, alpha=0.3)
 
 axes[1, 1].hist(prophet_residuals, bins=30, alpha=0.7, edgecolor='black', color='orange')
 axes[1, 1].axvline(x=0, color='r', linestyle='--')
-axes[1, 1].set_xlabel('Residual (°C)')
+axes[1, 1].set_xlabel('Residual (degC)')
 axes[1, 1].set_ylabel('Frequency')
 axes[1, 1].set_title('Prophet Residual Distribution', fontweight='bold')
 axes[1, 1].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('figures/05_residual_analysis.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/05_residual_analysis.png")
+print(" Saved: figures/05_residual_analysis.png")
 plt.close()
 
 # Plot 3: Model performance comparison
@@ -389,8 +393,8 @@ fig, ax = plt.subplots(figsize=(10, 6))
 x = np.arange(len(comparison_results))
 width = 0.25
 
-ax.bar(x - width, comparison_results['Test_MAE'], width, label='MAE (°C)', alpha=0.8)
-ax.bar(x, comparison_results['Test_RMSE'], width, label='RMSE (°C)', alpha=0.8)
+ax.bar(x - width, comparison_results['Test_MAE'], width, label='MAE (degC)', alpha=0.8)
+ax.bar(x, comparison_results['Test_RMSE'], width, label='RMSE (degC)', alpha=0.8)
 ax.bar(x + width, comparison_results['Test_MAPE']/10, width, label='MAPE/10 (%)', alpha=0.8)
 
 ax.set_xlabel('Model')
@@ -403,16 +407,16 @@ ax.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
 plt.savefig('figures/06_model_performance_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/06_model_performance_comparison.png")
+print(" Saved: figures/06_model_performance_comparison.png")
 plt.close()
 
 print("\n" + "="*80)
 print("CHECKPOINT: Model building and evaluation completed")
 print("="*80)
-print(f"✓ ARIMA{best_params} model: MAE = {mae_test:.3f}°C")
-print(f"✓ Prophet model: MAE = {mae_prophet_test:.3f}°C")
-print(f"✓ Best model: {best_model_name}")
-print(f"✓ Visualizations: 3 additional figures saved")
+print(f" ARIMA{best_params} model: MAE = {mae_test:.3f}degC")
+print(f" Prophet model: MAE = {mae_prophet_test:.3f}degC")
+print(f" Best model: {best_model_name}")
+print(f" Visualizations: 3 additional figures saved")
 print("\nReady to proceed to alert system simulation...")
 print("="*80)
 

@@ -6,7 +6,10 @@ Interactive Streamlit application demonstrating time-series forecasting
 models (ARIMA, Prophet) and automated agricultural alert system.
 
 Author: Jae Mwangi
-Data Source: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University
+Project: Independent project (not affiliated with MSU/Enviroweather)
+Data Source: Michigan Automated Weather Network (MAWN)
+Data Provider: Enviroweather at Michigan State University
+Data Usage: Publicly available data used with permission for educational purposes
 """
 
 import streamlit as st
@@ -22,7 +25,7 @@ warnings.filterwarnings('ignore')
 # Page configuration
 st.set_page_config(
  page_title="Weather Forecasting & Alert System",
- page_icon="",
+ page_icon="🌤️",
  layout="wide",
  initial_sidebar_state="expanded"
 )
@@ -93,70 +96,75 @@ except Exception as e:
 # ============================================================================
 
 st.sidebar.image("https://via.placeholder.com/300x100/1f77b4/ffffff?text=MAWN+Forecasting", use_container_width=True)
-st.sidebar.title(" Navigation")
+st.sidebar.title("Navigation")
 
 page = st.sidebar.radio(
  "Select Page",
- [" Overview", " Model Performance", " Alert System", " Data Explorer"]
+ ["Overview", "Model Performance", "Alert System", "Data Explorer"]
 )
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### About This Project")
 st.sidebar.info(
  """
- This dashboard demonstrates time-series forecasting models (ARIMA, Prophet) 
- and an automated alert system for agricultural decision-making.
+ This is an independent project demonstrating time-series forecasting models 
+ (ARIMA, Prophet) and an automated alert system for agricultural decision-making.
  
- **Data Source:** Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University 
+ **Data Source:** Michigan Automated Weather Network (MAWN)
+ **Data Provider:** Enviroweather at Michigan State University
  **Station:** Aetna 
  **Period:** 2019-2025
+ 
+ **Note:** This project is not affiliated with MSU or Enviroweather. 
+ Data used with permission for educational purposes.
  """
 )
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("### ‍ Developer")
+st.sidebar.markdown("### Developer")
 st.sidebar.markdown("**Jae Mwangi**")
-st.sidebar.markdown("Data Scientist | Michigan State University")
+st.sidebar.markdown("Data Scientist")
+st.sidebar.markdown("Former: Enviroweather at MSU (Feb-Aug 2024)")
 st.sidebar.markdown("[LinkedIn](https://www.linkedin.com/in/jae-m-9a492636/) | [GitHub](https://github.com/Jae15) | [Portfolio](TBD)")
 
 # ============================================================================
 # PAGE: OVERVIEW
 # ============================================================================
 
-if page == " Overview":
- st.markdown('<div class="main-header"> Weather Forecasting & Alert System</div>', unsafe_allow_html=True)
+if page == "Overview":
+ st.markdown('<div class="main-header">Weather Forecasting & Alert System</div>', unsafe_allow_html=True)
  st.markdown('<div class="sub-header">Time-Series Models for Agricultural Decision Support</div>', unsafe_allow_html=True)
  
  # Key metrics
  col1, col2, col3, col4 = st.columns(4)
  
  with col1:
- st.metric(
- label=" Data Points",
+  st.metric(
+ label="Data Points",
  value=f"{len(daily_data):,}",
  delta="Daily records"
  )
  
  with col2:
- st.metric(
- label=" Best Model MAE",
- value="3.56°C",
+  st.metric(
+ label="Best Model MAE",
+ value="3.56degC",
  delta="Prophet model"
  )
  
  with col3:
- st.metric(
- label=" Alerts Generated",
+  st.metric(
+ label="Alerts Generated",
  value=len(alerts),
  delta="Test period"
  )
  
  with col4:
- st.metric(
- label="⏰ Avg Lead Time",
- value=f"{alerts['lead_time_days'].mean():.1f} days",
- delta="Early warning"
- )
+  st.metric(
+   label="Avg Lead Time",
+   value=f"{alerts['lead_time_days'].mean():.1f} days",
+   delta="Early warning"
+  )
  
  st.markdown("---")
  
@@ -164,8 +172,8 @@ if page == " Overview":
  col1, col2 = st.columns([2, 1])
  
  with col1:
- st.markdown("### Project Overview")
- st.markdown("""
+  st.markdown("### Project Overview")
+  st.markdown("""
  This project demonstrates the development and deployment of **time-series forecasting models** 
  to predict weather patterns and enable **automated agricultural alerts**. The system supports 
  farmers in making critical decisions about crop planning, pest management, and resource allocation.
@@ -185,13 +193,13 @@ if page == " Overview":
  """)
  
  with col2:
- st.markdown("### Resume Alignment")
- st.markdown("""
+  st.markdown("### Project Background")
+  st.markdown("""
  <div class="metric-card">
- <strong>Enviroweather Experience:</strong><br><br>
- "Built time-series forecasting models (ARIMA, Prophet) to predict weather and 
- pest trends, enabling automated alerts that supported 1,000+ farmers in planning 
- crops and pest management."
+ <strong>About This Project:</strong><br><br>
+ This project demonstrates time-series forecasting and automated alert systems 
+ for agricultural decision support. It showcases capabilities in weather prediction, 
+ risk assessment, and data-driven decision making for farming operations.
  </div>
  """, unsafe_allow_html=True)
  
@@ -240,7 +248,7 @@ if page == " Overview":
  fig.update_layout(
  title="Daily Temperature Patterns (2019-2025)",
  xaxis_title="Date",
- yaxis_title="Temperature (°C)",
+ yaxis_title="Temperature (degC)",
  hovermode='x unified',
  height=400
  )
@@ -251,29 +259,29 @@ if page == " Overview":
  col1, col2, col3 = st.columns(3)
  
  with col1:
- st.markdown("#### Coldest Day")
- coldest = daily_data.loc[daily_data['atmp_min'].idxmin()]
- st.write(f"**{coldest['date'].strftime('%Y-%m-%d')}**")
- st.write(f"Temperature: {coldest['atmp_min']:.1f}°C")
+  st.markdown("#### Coldest Day")
+  coldest = daily_data.loc[daily_data['atmp_min'].idxmin()]
+  st.write(f"**{coldest['date'].strftime('%Y-%m-%d')}**")
+  st.write(f"Temperature: {coldest['atmp_min']:.1f}degC")
  
  with col2:
- st.markdown("#### Hottest Day")
- hottest = daily_data.loc[daily_data['atmp_max'].idxmax()]
- st.write(f"**{hottest['date'].strftime('%Y-%m-%d')}**")
- st.write(f"Temperature: {hottest['atmp_max']:.1f}°C")
+  st.markdown("#### Hottest Day")
+  hottest = daily_data.loc[daily_data['atmp_max'].idxmax()]
+  st.write(f"**{hottest['date'].strftime('%Y-%m-%d')}**")
+  st.write(f"Temperature: {hottest['atmp_max']:.1f}degC")
  
  with col3:
- st.markdown("#### Wettest Day")
- wettest = daily_data.loc[daily_data['pcpn_sum'].idxmax()]
- st.write(f"**{wettest['date'].strftime('%Y-%m-%d')}**")
- st.write(f"Precipitation: {wettest['pcpn_sum']:.1f}mm")
+  st.markdown("#### Wettest Day")
+  wettest = daily_data.loc[daily_data['pcpn_sum'].idxmax()]
+  st.write(f"**{wettest['date'].strftime('%Y-%m-%d')}**")
+  st.write(f"Precipitation: {wettest['pcpn_sum']:.1f}mm")
 
 # ============================================================================
 # PAGE: MODEL PERFORMANCE
 # ============================================================================
 
-elif page == " Model Performance":
- st.markdown('<div class="main-header"> Model Performance Comparison</div>', unsafe_allow_html=True)
+elif page == "Model Performance":
+ st.markdown('<div class="main-header">Model Performance Comparison</div>', unsafe_allow_html=True)
  
  # Model comparison table
  st.markdown("### Model Evaluation Metrics")
@@ -284,31 +292,31 @@ elif page == " Model Performance":
  
  # Highlight best model
  def highlight_best(s):
- if s.name in ['Test MAE', 'Test RMSE', 'Test MAPE']:
- is_min = s == s.min()
- return ['background-color: #c8e6c9' if v else '' for v in is_min]
- return ['' for _ in s]
+  if s.name in ['Test MAE', 'Test RMSE', 'Test MAPE']:
+   is_min = s == s.min()
+   return ['background-color: #c8e6c9' if v else '' for v in is_min]
+  return ['' for _ in s]
  
  styled_table = comparison_display.style.apply(highlight_best, axis=0).format({
- 'Val MAE': '{:.3f}°C',
- 'Val RMSE': '{:.3f}°C',
+ 'Val MAE': '{:.3f}degC',
+ 'Val RMSE': '{:.3f}degC',
  'Val MAPE': '{:.2f}%',
- 'Test MAE': '{:.3f}°C',
- 'Test RMSE': '{:.3f}°C',
+ 'Test MAE': '{:.3f}degC',
+ 'Test RMSE': '{:.3f}degC',
  'Test MAPE': '{:.2f}%'
  })
  
  st.dataframe(styled_table, use_container_width=True)
  
- st.info(" **Best Model: Prophet** - Achieved lowest MAE (3.56°C) on test set, significantly outperforming ARIMA and baseline models.")
+ st.info("**Best Model: Prophet** - Achieved lowest MAE (3.56degC) on test set, significantly outperforming ARIMA and baseline models.")
  
  # Visual comparison
  col1, col2 = st.columns(2)
  
  with col1:
- st.markdown("### Test Set MAE Comparison")
- fig = go.Figure(data=[
- go.Bar(
+  st.markdown("### Test Set MAE Comparison")
+  fig = go.Figure(data=[
+   go.Bar(
  x=model_comparison['Model'],
  y=model_comparison['Test_MAE'],
  text=model_comparison['Test_MAE'].round(3),
@@ -317,16 +325,16 @@ elif page == " Model Performance":
  )
  ])
  fig.update_layout(
- yaxis_title="MAE (°C)",
+ yaxis_title="MAE (degC)",
  height=400,
  showlegend=False
  )
  st.plotly_chart(fig, use_container_width=True)
  
  with col2:
- st.markdown("### Test Set RMSE Comparison")
- fig = go.Figure(data=[
- go.Bar(
+  st.markdown("### Test Set RMSE Comparison")
+  fig = go.Figure(data=[
+   go.Bar(
  x=model_comparison['Model'],
  y=model_comparison['Test_RMSE'],
  text=model_comparison['Test_RMSE'].round(3),
@@ -335,7 +343,7 @@ elif page == " Model Performance":
  )
  ])
  fig.update_layout(
- yaxis_title="RMSE (°C)",
+ yaxis_title="RMSE (degC)",
  height=400,
  showlegend=False
  )
@@ -349,9 +357,9 @@ elif page == " Model Performance":
  tab1, tab2, tab3 = st.tabs(["ARIMA", "Prophet", "Baseline"])
  
  with tab1:
- col1, col2 = st.columns([2, 1])
- with col1:
- st.markdown("""
+  col1, col2 = st.columns([2, 1])
+  with col1:
+   st.markdown("""
  **ARIMA (AutoRegressive Integrated Moving Average)**
  
  ARIMA is a classical statistical model for time-series forecasting that combines:
@@ -365,16 +373,16 @@ elif page == " Model Performance":
  - First-order differencing applied (d=1)
  
  **Performance:**
- - Test MAE: 12.18°C
- - Test RMSE: 14.40°C
+ - Test MAE: 12.18degC
+ - Test RMSE: 14.40degC
  
  **Limitations:**
  - Struggled to capture strong seasonal patterns
  - Better suited for short-term forecasts
  - Requires stationary data
  """)
- with col2:
- st.markdown("""
+  with col2:
+   st.markdown("""
  **Key Parameters:**
  - p = 5 (AR order)
  - d = 1 (Differencing)
@@ -386,9 +394,9 @@ elif page == " Model Performance":
  """)
  
  with tab2:
- col1, col2 = st.columns([2, 1])
- with col1:
- st.markdown("""
+  col1, col2 = st.columns([2, 1])
+  with col1:
+   st.markdown("""
  **Prophet (Facebook's Time-Series Model)**
  
  Prophet is designed for business forecasting with strong seasonal patterns:
@@ -404,8 +412,8 @@ elif page == " Model Performance":
  - Interval width: 95%
  
  **Performance:**
- - Test MAE: 3.56°C 
- - Test RMSE: 4.61°C 
+ - Test MAE: 3.56degC 
+ - Test RMSE: 4.61degC 
  
  **Advantages:**
  - Excellent at capturing seasonality
@@ -413,8 +421,8 @@ elif page == " Model Performance":
  - Intuitive parameter tuning
  - Provides uncertainty intervals
  """)
- with col2:
- st.markdown("""
+  with col2:
+   st.markdown("""
  **Why Prophet Won:**
  - Strong seasonal patterns in data
  - Automatic seasonality detection
@@ -428,7 +436,7 @@ elif page == " Model Performance":
  """)
  
  with tab3:
- st.markdown("""
+  st.markdown("""
  **Baseline (Persistence Model)**
  
  The persistence model is a naive forecasting approach where tomorrow's value 
@@ -441,8 +449,8 @@ elif page == " Model Performance":
  - Simple but effective for stable series
  
  **Performance:**
- - Test MAE: 12.09°C
- - Test RMSE: 14.28°C
+ - Test MAE: 12.09degC
+ - Test RMSE: 14.28degC
  
  **Interpretation:**
  Both ARIMA and Prophet significantly outperform the baseline, with Prophet 
@@ -453,19 +461,19 @@ elif page == " Model Performance":
 # PAGE: ALERT SYSTEM
 # ============================================================================
 
-elif page == " Alert System":
- st.markdown('<div class="main-header"> Automated Agricultural Alert System</div>', unsafe_allow_html=True)
+elif page == "Alert System":
+ st.markdown('<div class="main-header">Automated Agricultural Alert System</div>', unsafe_allow_html=True)
  
  # Alert summary
  col1, col2, col3 = st.columns(3)
  
  with col1:
- st.metric("Total Alerts", len(alerts))
+  st.metric("Total Alerts", len(alerts))
  with col2:
- high_severity = len(alerts[alerts['severity'] == 'HIGH'])
- st.metric("High Severity", high_severity, delta=f"{high_severity/len(alerts)*100:.1f}%")
+  high_severity = len(alerts[alerts['severity'] == 'HIGH'])
+  st.metric("High Severity", high_severity, delta=f"{high_severity/len(alerts)*100:.1f}%")
  with col3:
- st.metric("Avg Lead Time", f"{alerts['lead_time_days'].mean():.1f} days")
+  st.metric("Avg Lead Time", f"{alerts['lead_time_days'].mean():.1f} days")
  
  st.markdown("---")
  
@@ -475,10 +483,10 @@ elif page == " Alert System":
  col1, col2 = st.columns(2)
  
  with col1:
- st.markdown("""
+  st.markdown("""
  <div class="alert-high">
  <strong> FROST WARNING</strong><br>
- Condition: Temperature < 0°C<br>
+ Condition: Temperature < 0degC<br>
  Severity: HIGH<br>
  Action: Cover sensitive crops, delay planting
  </div>
@@ -487,7 +495,7 @@ elif page == " Alert System":
  st.markdown("""
  <div class="alert-high">
  <strong> HIGH DISEASE RISK</strong><br>
- Condition: Humidity > 90% AND Temp 15-25°C<br>
+ Condition: Humidity > 90% AND Temp 15-25degC<br>
  Severity: HIGH<br>
  Action: Apply preventive fungicides, monitor closely
  </div>
@@ -503,10 +511,10 @@ elif page == " Alert System":
  """, unsafe_allow_html=True)
  
  with col2:
- st.markdown("""
+  st.markdown("""
  <div class="alert-medium">
  <strong> HEAT STRESS</strong><br>
- Condition: Temperature > 30°C<br>
+ Condition: Temperature > 30degC<br>
  Severity: MEDIUM<br>
  Action: Increase irrigation, monitor crop health
  </div>
@@ -515,7 +523,7 @@ elif page == " Alert System":
  st.markdown("""
  <div class="alert-medium">
  <strong> MODERATE DISEASE RISK</strong><br>
- Condition: Humidity > 85% AND Temp 10-30°C<br>
+ Condition: Humidity > 85% AND Temp 10-30degC<br>
  Severity: MEDIUM<br>
  Action: Increase scouting frequency
  </div>
@@ -529,24 +537,24 @@ elif page == " Alert System":
  # Filter options
  col1, col2 = st.columns([3, 1])
  with col1:
- alert_types = ['All'] + list(alerts['type'].unique())
- selected_type = st.selectbox("Filter by Alert Type", alert_types)
+  alert_types = ['All'] + list(alerts['type'].unique())
+  selected_type = st.selectbox("Filter by Alert Type", alert_types)
  with col2:
- severity_filter = st.selectbox("Filter by Severity", ['All', 'HIGH', 'MEDIUM'])
+  severity_filter = st.selectbox("Filter by Severity", ['All', 'HIGH', 'MEDIUM'])
  
  # Apply filters
  filtered_alerts = alerts.copy()
  if selected_type != 'All':
- filtered_alerts = filtered_alerts[filtered_alerts['type'] == selected_type]
+  filtered_alerts = filtered_alerts[filtered_alerts['type'] == selected_type]
  if severity_filter != 'All':
- filtered_alerts = filtered_alerts[filtered_alerts['severity'] == severity_filter]
+  filtered_alerts = filtered_alerts[filtered_alerts['severity'] == severity_filter]
  
  # Alert timeline visualization
  fig = go.Figure()
  
  for alert_type in filtered_alerts['type'].unique():
- subset = filtered_alerts[filtered_alerts['type'] == alert_type]
- fig.add_trace(go.Scatter(
+  subset = filtered_alerts[filtered_alerts['type'] == alert_type]
+  fig.add_trace(go.Scatter(
  x=subset['date'],
  y=[alert_type] * len(subset),
  mode='markers',
@@ -579,7 +587,7 @@ elif page == " Alert System":
  # Download alerts
  csv = filtered_alerts.to_csv(index=False)
  st.download_button(
- label=" Download Alerts (CSV)",
+ label="Download Alerts (CSV)",
  data=csv,
  file_name="agricultural_alerts.csv",
  mime="text/csv"
@@ -589,22 +597,22 @@ elif page == " Alert System":
 # PAGE: DATA EXPLORER
 # ============================================================================
 
-elif page == " Data Explorer":
- st.markdown('<div class="main-header"> Data Explorer</div>', unsafe_allow_html=True)
+elif page == "Data Explorer":
+ st.markdown('<div class="main-header">Data Explorer</div>', unsafe_allow_html=True)
  
  # Date range selector
  st.markdown("### Select Date Range")
  col1, col2 = st.columns(2)
  with col1:
- start_date = st.date_input("Start Date", daily_data['date'].min())
+  start_date = st.date_input("Start Date", daily_data['date'].min())
  with col2:
- end_date = st.date_input("End Date", daily_data['date'].max())
+  end_date = st.date_input("End Date", daily_data['date'].max())
  
  # Filter data
  mask = (daily_data['date'] >= pd.to_datetime(start_date)) & (daily_data['date'] <= pd.to_datetime(end_date))
  filtered_data = daily_data[mask]
  
- st.info(f" Showing {len(filtered_data)} days of data")
+ st.info(f"Showing {len(filtered_data)} days of data")
  
  # Variable selector
  st.markdown("### Visualize Variables")
@@ -626,16 +634,16 @@ elif page == " Data Explorer":
  )
  
  if selected_vars:
- fig = make_subplots(
- rows=len(selected_vars),
- cols=1,
- subplot_titles=selected_vars,
- vertical_spacing=0.1
- )
- 
- for i, var_name in enumerate(selected_vars, 1):
- var_col = variables[var_name]
- fig.add_trace(
+  fig = make_subplots(
+   rows=len(selected_vars),
+   cols=1,
+   subplot_titles=selected_vars,
+   vertical_spacing=0.1
+  )
+  
+  for i, var_name in enumerate(selected_vars, 1):
+   var_col = variables[var_name]
+   fig.add_trace(
  go.Scatter(
  x=filtered_data['date'],
  y=filtered_data[var_col],
@@ -661,12 +669,12 @@ elif page == " Data Explorer":
  st.dataframe(stats, use_container_width=True)
  
  # Raw data
- with st.expander(" View Raw Data"):
- st.dataframe(filtered_data, use_container_width=True)
+ with st.expander("View Raw Data"):
+  st.dataframe(filtered_data, use_container_width=True)
  
  csv = filtered_data.to_csv(index=False)
  st.download_button(
- label=" Download Data (CSV)",
+ label="Download Data (CSV)",
  data=csv,
  file_name="mawn_daily_data.csv",
  mime="text/csv"
@@ -680,8 +688,9 @@ st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #888; padding: 1rem;">
  <p><strong>Weather Forecasting & Alert System Dashboard</strong></p>
- <p>Developed by Jae Mwangi | Data Scientist</p>
- <p>Data Source: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University | 2019-2025</p>
+ <p>By Jae Mwangi | Data Scientist</p>
+ <p>Data Source: Michigan Automated Weather Network (MAWN) | Data Provider: Enviroweather at Michigan State University</p>
+ <p><em>This project is not affiliated with MSU or Enviroweather. Data used with permission for educational purposes.</em></p>
 </div>
 """, unsafe_allow_html=True)
 

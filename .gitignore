@@ -62,3 +62,7 @@ output_*.log
 PRIVATE*.md
 *PRIVATE*
 
+# Ignore all markdown files except README.md
+*.md
+!README.md
+

@@ -10,7 +10,9 @@
 
 ## Project Overview
 
-This project demonstrates the development and deployment of **time-series forecasting models** (ARIMA and Prophet) to predict weather patterns and enable **automated agricultural alerts**. Built using real-world data from the Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University, this system supports farmers in making critical decisions about crop planning, pest management, and resource allocation.
+This **independent portfolio project** demonstrates the development and deployment of **time-series forecasting models** (ARIMA and Prophet) to predict weather patterns and enable **automated agricultural alerts**. The project utilizes publicly available data from the Michigan Automated Weather Network (MAWN) to showcase time-series forecasting and agricultural decision support capabilities.
+
+**Note:** This is a personal project and is not affiliated with Michigan State University or Enviroweather. Data used in this project is publicly available from MAWN and is used with permission for educational purposes.
 
 ### Key Objectives
 
@@ -78,17 +80,19 @@ This project demonstrates the development and deployment of **time-series foreca
 - **Streamlit**: Web application framework
 
 ### Data Source
-- **MAWN (Michigan Automated Weather Network)**: Quality-controlled weather data
+- **MAWN (Michigan Automated Weather Network)**: Quality-controlled weather data (publicly available)
+- **Data Provider**: Enviroweather at Michigan State University
 - **Station**: Aetna
 - **Period**: April 2019 - August 2025 (2,332 daily records)
 - **Variables**: Temperature, humidity, precipitation, wind, solar radiation, soil conditions
+- **Attribution**: Data used with permission for educational purposes
 
 ---
 
 ## Project Structure
 
 ```
-enviroweather_projects/
+weather-forecasting-alerts/
 
  app.py # Streamlit dashboard application
  01_timeseries_forecasting.py # Data preparation & EDA
@@ -177,7 +181,7 @@ The dashboard will open in your browser at `http://localhost:8501`
 
 ### 1. Data Preparation
 
-**Data Source**: Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University quality-controlled database
+**Data Source**: Publicly available data from Michigan Automated Weather Network (MAWN), provided by Enviroweather at Michigan State University
 
 **Sampling Strategy**:
 - Selected Aetna station for complete time-series continuity
@@ -284,52 +288,13 @@ The dashboard will open in your browser at `http://localhost:8501`
  - Low false negative rate (critical for agriculture)
  - Acceptable false positive rate (better safe than sorry)
 
----
-
-## Skills Demonstrated
-
-This project showcases the following data science competencies:
-
-### Technical Skills
-- Time-series analysis and forecasting
-- Statistical modeling (ARIMA, Prophet)
-- Feature engineering and data preprocessing
-- Model evaluation and comparison
-- Data visualization (static and interactive)
-- Dashboard development (Streamlit)
-
-### Domain Knowledge
-- Agricultural decision support systems
-- Weather pattern analysis
-- Pest and disease risk assessment
-- Growing Degree Days (GDD) calculations
-
-### Software Engineering
-- Clean, modular Python code
-- Version control (Git/GitHub)
-- Documentation and reproducibility
-- Deployment-ready application
-
----
-
-## Future Enhancements
-
-- [ ] Expand to multiple weather stations (spatial analysis)
-- [ ] Integrate real-time data feeds (API)
-- [ ] Add ensemble methods (model stacking)
-- [ ] Implement LSTM/GRU deep learning models
-- [ ] Create mobile-friendly alert notifications
-- [ ] Add crop-specific recommendations
-- [ ] Integrate soil moisture sensor data
-- [ ] Deploy to cloud platform (AWS/Azure/GCP)
-
----
 
 ## References
 
 ### Data Source
-- **Michigan Automated Weather Network (MAWN), operated by Enviroweather at Michigan State University**: [https://www.enviroweather.msu.edu/](https://www.enviroweather.msu.edu/)
-- Michigan State University, Department of Plant, Soil and Microbial Sciences
+- **Michigan Automated Weather Network (MAWN)**: [https://www.enviroweather.msu.edu/](https://www.enviroweather.msu.edu/)
+  - Operated by Enviroweather at Michigan State University
+  - Data used with permission for educational purposes
 
 ### Libraries & Tools
 - **Prophet**: Taylor, S. J., & Letham, B. (2018). Forecasting at scale. *The American Statistician*, 72(1), 37-45.
@@ -341,15 +306,14 @@ This project showcases the following data science competencies:
 
 ---
 
-## ‍ About Me
+## About Me
 
 **Jae Mwangi** 
-Data Scientist | Enviroweather
-Department of Geography, Environment, and Spatial Sciences
-College of Social Science
-Michigan State University
+Data Scientist
 
-I'm a data scientist with experience in time-series forecasting, machine learning, and agricultural decision support systems. This project is part of my portfolio demonstrating real-world applications of data science in agriculture.
+I'm a data scientist with experience in time-series forecasting, machine learning, and agricultural decision support systems. This independent portfolio project demonstrates real-world applications of data science in agriculture using publicly available weather data.
+
+**Previous Experience:** Data Scientist at Enviroweather, Michigan State University (Feb 2024 - Aug 2025)
 
 ### Connect with Me
 - **LinkedIn**: [linkedin.com/in/jae-m-9a492636](https://www.linkedin.com/in/jae-m-9a492636/)
@@ -357,17 +321,6 @@ I'm a data scientist with experience in time-series forecasting, machine learnin
 - **Email**: [janomwangi@gmail.com](mailto:janomwangi@gmail.com)
 - **Portfolio**: [TBD](https://TBD)
 
-### Experience Highlights
-- **Data Scientist, Enviroweather
-Department of Geography, Environment, and Spatial Sciences
-College of Social Science
-Michigan State University** (Feb 2024 - Present)
- - Built time-series forecasting models (ARIMA, Prophet) to predict weather and pest trends
- - Enabled automated alerts that supported 1,000+ farmers in planning crops and pest management
- - Applied clustering (K-means, Hierarchical) to segment microclimates and guide targeted recommendations
- - Developed classification models with 85%+ accuracy in pest outbreak prediction
-
----
 
 ## License
 
@@ -377,8 +330,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- **Michigan State University** for providing access to MAWN data
-- **Enviroweather team** for domain expertise and guidance
+- **Enviroweather at Michigan State University** for providing access to MAWN data for educational purposes
+- **Michigan Automated Weather Network (MAWN)** for maintaining high-quality weather monitoring infrastructure
 - **Open-source community** for the amazing tools and libraries
 
 ---

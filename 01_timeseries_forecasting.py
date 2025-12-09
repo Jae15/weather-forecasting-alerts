@@ -1,19 +1,17 @@
 #!/usr/bin/env python3.11
 """
-PROJECT 1: TIME-SERIES FORECASTING FOR WEATHER & PEST TRENDS
-=============================================================
+INDEPENDENT PORTFOLIO PROJECT: TIME-SERIES FORECASTING FOR WEATHER & PEST TRENDS
+=================================================================================
+
+Author: Jae Mwangi
+Project: Independent portfolio project (not affiliated with MSU/Enviroweather)
+Data Source: Michigan Automated Weather Network (MAWN)
+Data Provider: Enviroweather at Michigan State University
+Data Usage: Publicly available data used with permission for educational purposes
 
 Objective: Build ARIMA and Prophet models to predict weather variables and 
 simulate automated alert systems for agricultural decision-making.
 
-Resume Alignment:
-"Built time-series forecasting models (ARIMA, Prophet) to predict weather and 
-pest trends, enabling automated alerts that supported 1,000+ farmers in planning 
-crops and pest management."
-
-Author: Jae Mwangi
-Date: October 2025
-Data Source: MAWN Quality-Controlled Database (mawndb_qc)
 """
 
 import pandas as pd
@@ -57,9 +55,9 @@ print("-" * 80)
 # Load the extracted hourly data
 df_hourly = pd.read_csv('mawn_hourly_sample.csv', parse_dates=['datetime'])
 
-print(f"✓ Loaded {len(df_hourly):,} hourly records")
-print(f"✓ Date range: {df_hourly['datetime'].min()} to {df_hourly['datetime'].max()}")
-print(f"✓ Stations: {', '.join(df_hourly['station'].unique())}")
+print(f" Loaded {len(df_hourly):,} hourly records")
+print(f" Date range: {df_hourly['datetime'].min()} to {df_hourly['datetime'].max()}")
+print(f" Stations: {', '.join(df_hourly['station'].unique())}")
 
 print("\n[1.2] Data Quality Assessment")
 print("-" * 80)
@@ -69,18 +67,18 @@ station = 'aetna'
 df_station = df_hourly[df_hourly['station'] == station].copy()
 df_station = df_station.sort_values('datetime').reset_index(drop=True)
 
-print(f"✓ Selected station: {station.upper()}")
-print(f"✓ Records: {len(df_station):,}")
-print(f"✓ Date range: {df_station['datetime'].min()} to {df_station['datetime'].max()}")
+print(f"Selected station: {station.upper()}")
+print(f"Records: {len(df_station):,}")
+print(f"Date range: {df_station['datetime'].min()} to {df_station['datetime'].max()}")
 
 # Check data quality flags
-print("\n✓ Data Quality Flags Distribution:")
+print("\nData Quality Flags Distribution:")
 print(f"  - Temperature (atmp_src): {df_station['atmp_src'].value_counts().to_dict()}")
 print(f"  - Precipitation (pcpn_src): {df_station['pcpn_src'].value_counts().to_dict()}")
 
 # Missing data analysis
 missing_pct = (df_station[['atmp', 'relh', 'pcpn', 'lws0_pwet']].isnull().sum() / len(df_station) * 100)
-print("\n✓ Missing Data Percentage:")
+print("\n Missing Data Percentage:")
 for col, pct in missing_pct.items():
     print(f"  - {col}: {pct:.2f}%")
 
@@ -108,17 +106,17 @@ daily_agg.columns = ['_'.join(col).strip('_') for col in daily_agg.columns.value
 daily_agg.rename(columns={'date': 'date'}, inplace=True)
 daily_agg['date'] = pd.to_datetime(daily_agg['date'])
 
-print(f"✓ Daily records created: {len(daily_agg):,}")
-print(f"✓ Date range: {daily_agg['date'].min()} to {daily_agg['date'].max()}")
+print(f" Daily records created: {len(daily_agg):,}")
+print(f" Date range: {daily_agg['date'].min()} to {daily_agg['date'].max()}")
 
-# Calculate Growing Degree Days (GDD) - Base 10°C
+# Calculate Growing Degree Days (GDD) - Base 10degC
 daily_agg['gdd'] = daily_agg['atmp_mean'].apply(lambda x: max(0, x - 10))
 
 # Calculate temperature range
 daily_agg['temp_range'] = daily_agg['atmp_max'] - daily_agg['atmp_min']
 
-print("\n✓ Engineered Features:")
-print("  - Growing Degree Days (GDD, base 10°C)")
+print("\n Engineered Features:")
+print("  - Growing Degree Days (GDD, base 10degC)")
 print("  - Temperature Range (daily max - min)")
 print("  - Daily precipitation sum")
 print("  - Leaf wetness duration (hours)")
@@ -143,7 +141,7 @@ print(missing_after[missing_after > 0])
 key_vars = ['atmp_mean', 'relh_mean', 'pcpn_sum']
 daily_agg = daily_agg.dropna(subset=key_vars)
 
-print(f"\n✓ Final daily records: {len(daily_agg):,}")
+print(f"\n Final daily records: {len(daily_agg):,}")
 
 print("\n[1.5] Train/Validation/Test Split")
 print("-" * 80)
@@ -160,13 +158,13 @@ train_data = daily_agg[daily_agg['date'] <= train_end].copy()
 val_data = daily_agg[(daily_agg['date'] > train_end) & (daily_agg['date'] <= val_end)].copy()
 test_data = daily_agg[daily_agg['date'] > val_end].copy()
 
-print(f"\n✓ Train set: {len(train_data):,} days ({train_data['date'].min()} to {train_data['date'].max()})")
-print(f"✓ Validation set: {len(val_data):,} days ({val_data['date'].min()} to {val_data['date'].max()})")
-print(f"✓ Test set: {len(test_data):,} days ({test_data['date'].min()} to {test_data['date'].max()})")
+print(f"\n Train set: {len(train_data):,} days ({train_data['date'].min()} to {train_data['date'].max()})")
+print(f" Validation set: {len(val_data):,} days ({val_data['date'].min()} to {val_data['date'].max()})")
+print(f" Test set: {len(test_data):,} days ({test_data['date'].min()} to {test_data['date'].max()})")
 
 # Save processed data
 daily_agg.to_csv('daily_weather_aetna.csv', index=False)
-print(f"\n✓ Saved processed daily data to: daily_weather_aetna.csv")
+print(f"\n Saved processed daily data to: daily_weather_aetna.csv")
 
 # ============================================================================
 # SECTION 2: EXPLORATORY DATA ANALYSIS
@@ -179,7 +177,7 @@ print("="*80)
 print("\n[2.1] Descriptive Statistics")
 print("-" * 80)
 
-print("\nTemperature Statistics (°C):")
+print("\nTemperature Statistics (degC):")
 print(train_data[['atmp_min', 'atmp_max', 'atmp_mean']].describe())
 
 print("\nPrecipitation Statistics (mm):")
@@ -198,7 +196,7 @@ fig, axes = plt.subplots(3, 1, figsize=(14, 10))
 axes[0].plot(train_data['date'], train_data['atmp_mean'], label='Mean Temperature', alpha=0.7)
 axes[0].fill_between(train_data['date'], train_data['atmp_min'], train_data['atmp_max'], 
                       alpha=0.3, label='Min-Max Range')
-axes[0].set_ylabel('Temperature (°C)')
+axes[0].set_ylabel('Temperature (degC)')
 axes[0].set_title('Daily Temperature Patterns (Training Data: 2019-2023)', fontsize=12, fontweight='bold')
 axes[0].legend()
 axes[0].grid(True, alpha=0.3)
@@ -219,7 +217,7 @@ axes[2].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('figures/01_weather_timeseries_overview.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/01_weather_timeseries_overview.png")
+print(" Saved: figures/01_weather_timeseries_overview.png")
 plt.close()
 
 # Plot 2: Seasonal patterns
@@ -235,7 +233,7 @@ axes[0, 0].fill_between(monthly_temp.index,
                         monthly_temp['mean'] + monthly_temp['std'],
                         alpha=0.3)
 axes[0, 0].set_xlabel('Month')
-axes[0, 0].set_ylabel('Temperature (°C)')
+axes[0, 0].set_ylabel('Temperature (degC)')
 axes[0, 0].set_title('Seasonal Temperature Pattern', fontweight='bold')
 axes[0, 0].set_xticks(range(1, 13))
 axes[0, 0].grid(True, alpha=0.3)
@@ -251,7 +249,7 @@ axes[0, 1].grid(True, alpha=0.3)
 
 # Temperature distribution
 axes[1, 0].hist(train_data['atmp_mean'], bins=50, alpha=0.7, edgecolor='black')
-axes[1, 0].set_xlabel('Temperature (°C)')
+axes[1, 0].set_xlabel('Temperature (degC)')
 axes[1, 0].set_ylabel('Frequency')
 axes[1, 0].set_title('Temperature Distribution', fontweight='bold')
 axes[1, 0].grid(True, alpha=0.3)
@@ -266,10 +264,10 @@ axes[1, 1].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('figures/02_seasonal_patterns.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/02_seasonal_patterns.png")
+print(" Saved: figures/02_seasonal_patterns.png")
 plt.close()
 
-print("\n✓ EDA visualizations completed")
+print("\n EDA visualizations completed")
 
 # ============================================================================
 # SECTION 3: STATIONARITY TESTING
@@ -297,12 +295,12 @@ def test_stationarity(timeseries, variable_name):
         print(f"  {key}: {value:.3f}")
     
     if result[1] <= 0.05:
-        print(f"✓ Result: STATIONARY (p-value = {result[1]:.6f} <= 0.05)")
-        print("  → No differencing required")
+        print(f" Result: STATIONARY (p-value = {result[1]:.6f} <= 0.05)")
+        print("  -> No differencing required")
         return True, 0
     else:
-        print(f"✗ Result: NON-STATIONARY (p-value = {result[1]:.6f} > 0.05)")
-        print("  → Differencing required")
+        print(f" Result: NON-STATIONARY (p-value = {result[1]:.6f} > 0.05)")
+        print("  -> Differencing required")
         return False, 1
 
 # Test temperature
@@ -347,22 +345,22 @@ axes[1, 1].set_title('PACF: Differenced Temperature Series', fontweight='bold')
 
 plt.tight_layout()
 plt.savefig('figures/03_acf_pacf_analysis.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: figures/03_acf_pacf_analysis.png")
+print("\n Saved: figures/03_acf_pacf_analysis.png")
 plt.close()
 
-print("\n✓ ACF/PACF analysis completed")
+print("\n ACF/PACF analysis completed")
 print("  Interpretation guide:")
-print("  - PACF cuts off after lag p → AR(p)")
-print("  - ACF cuts off after lag q → MA(q)")
-print("  - Both decay gradually → ARIMA(p,d,q)")
+print("  - PACF cuts off after lag p -> AR(p)")
+print("  - ACF cuts off after lag q -> MA(q)")
+print("  - Both decay gradually -> ARIMA(p,d,q)")
 
 print("\n" + "="*80)
 print("CHECKPOINT: Data preparation and EDA completed")
 print("="*80)
-print(f"✓ Processed daily data: {len(daily_agg):,} records")
-print(f"✓ Train/Val/Test split: {len(train_data)}/{len(val_data)}/{len(test_data)} days")
-print(f"✓ Visualizations: 3 figures saved")
-print(f"✓ Stationarity: Tested and documented")
+print(f" Processed daily data: {len(daily_agg):,} records")
+print(f" Train/Val/Test split: {len(train_data)}/{len(val_data)}/{len(test_data)} days")
+print(f" Visualizations: 3 figures saved")
+print(f" Stationarity: Tested and documented")
 print("\nReady to proceed to model building...")
 print("="*80)
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3.11
 """
-PROJECT 1: AUTOMATED ALERT SYSTEM SIMULATION
-============================================
+INDEPENDENT PORTFOLIO PROJECT: AUTOMATED ALERT SYSTEM SIMULATION
+================================================================
+
+Author: Jae Mwangi
+Project: Independent portfolio project (not affiliated with MSU/Enviroweather)
+Data Source: MAWN (publicly available data, used with permission)
 
 This script simulates an automated agricultural alert system using
 Prophet forecasts to warn farmers about critical weather events.
 
-Resume Alignment:
-"Built time-series forecasting models (ARIMA, Prophet) to predict weather and 
-pest trends, enabling automated alerts that supported 1,000+ farmers in planning 
-crops and pest management."
 """
 
 import pandas as pd
@@ -68,7 +68,7 @@ temp_model.fit(temp_df)
 future_temp = temp_model.make_future_dataframe(periods=len(test_data) + 14, freq='D')
 forecast_temp = temp_model.predict(future_temp)
 
-print(f"✓ Temperature forecast: {len(forecast_temp)} days")
+print(f" Temperature forecast: {len(forecast_temp)} days")
 
 print("\n[10.2] Relative Humidity Forecasting (Prophet)")
 print("-" * 80)
@@ -81,7 +81,7 @@ humid_model.fit(humid_df)
 future_humid = humid_model.make_future_dataframe(periods=len(test_data) + 14, freq='D')
 forecast_humid = humid_model.predict(future_humid)
 
-print(f"✓ Humidity forecast: {len(forecast_humid)} days")
+print(f" Humidity forecast: {len(forecast_humid)} days")
 
 print("\n[10.3] Precipitation Forecasting (Prophet)")
 print("-" * 80)
@@ -94,7 +94,7 @@ precip_model.fit(precip_df)
 future_precip = precip_model.make_future_dataframe(periods=len(test_data) + 14, freq='D')
 forecast_precip = precip_model.predict(future_precip)
 
-print(f"✓ Precipitation forecast: {len(forecast_precip)} days")
+print(f" Precipitation forecast: {len(forecast_precip)} days")
 
 # ============================================================================
 # SECTION 11: ALERT THRESHOLD DEFINITIONS
@@ -107,21 +107,21 @@ print("="*80)
 alert_thresholds = {
     'frost_warning': {
         'description': 'Frost Risk - Potential crop damage',
-        'condition': 'Temperature < 0°C',
+        'condition': 'Temperature < 0degC',
         'threshold_temp': 0,
         'severity': 'HIGH',
         'action': 'Cover sensitive crops, delay planting'
     },
     'heat_stress': {
         'description': 'Heat Stress - Reduced crop yield',
-        'condition': 'Temperature > 30°C',
+        'condition': 'Temperature > 30degC',
         'threshold_temp': 30,
         'severity': 'MEDIUM',
         'action': 'Increase irrigation, monitor crop health'
     },
     'disease_risk_high': {
         'description': 'High Disease Risk - Fungal/bacterial',
-        'condition': 'Humidity > 90% AND Temp 15-25°C',
+        'condition': 'Humidity > 90% AND Temp 15-25degC',
         'threshold_humid': 90,
         'temp_range': (15, 25),
         'severity': 'HIGH',
@@ -129,7 +129,7 @@ alert_thresholds = {
     },
     'disease_risk_moderate': {
         'description': 'Moderate Disease Risk',
-        'condition': 'Humidity > 85% AND Temp 10-30°C',
+        'condition': 'Humidity > 85% AND Temp 10-30degC',
         'threshold_humid': 85,
         'temp_range': (10, 30),
         'severity': 'MEDIUM',
@@ -178,7 +178,7 @@ def generate_alerts(forecast_df, alert_thresholds):
                 'date': date,
                 'type': 'frost_warning',
                 'severity': 'HIGH',
-                'message': f"FROST WARNING: Temperature forecast {temp:.1f}°C (below 0°C)",
+                'message': f"FROST WARNING: Temperature forecast {temp:.1f}degC (below 0degC)",
                 'value': temp,
                 'lead_time_days': (date - forecast_df.iloc[0]['ds']).days
             })
@@ -189,7 +189,7 @@ def generate_alerts(forecast_df, alert_thresholds):
                 'date': date,
                 'type': 'heat_stress',
                 'severity': 'MEDIUM',
-                'message': f"HEAT STRESS: Temperature forecast {temp:.1f}°C (above 30°C)",
+                'message': f"HEAT STRESS: Temperature forecast {temp:.1f}degC (above 30degC)",
                 'value': temp,
                 'lead_time_days': (date - forecast_df.iloc[0]['ds']).days
             })
@@ -202,7 +202,7 @@ def generate_alerts(forecast_df, alert_thresholds):
                 'date': date,
                 'type': 'disease_risk_high',
                 'severity': 'HIGH',
-                'message': f"HIGH DISEASE RISK: Humidity {humid:.1f}%, Temp {temp:.1f}°C",
+                'message': f"HIGH DISEASE RISK: Humidity {humid:.1f}%, Temp {temp:.1f}degC",
                 'value': humid,
                 'lead_time_days': (date - forecast_df.iloc[0]['ds']).days
             })
@@ -215,7 +215,7 @@ def generate_alerts(forecast_df, alert_thresholds):
                 'date': date,
                 'type': 'disease_risk_moderate',
                 'severity': 'MEDIUM',
-                'message': f"MODERATE DISEASE RISK: Humidity {humid:.1f}%, Temp {temp:.1f}°C",
+                'message': f"MODERATE DISEASE RISK: Humidity {humid:.1f}%, Temp {temp:.1f}degC",
                 'value': humid,
                 'lead_time_days': (date - forecast_df.iloc[0]['ds']).days
             })
@@ -250,15 +250,15 @@ forecast_combined = pd.DataFrame({
 test_start = test_data['date'].min()
 forecast_test_period = forecast_combined[forecast_combined['ds'] >= test_start].copy()
 
-print(f"✓ Forecast period: {forecast_test_period['ds'].min()} to {forecast_test_period['ds'].max()}")
-print(f"✓ Number of days: {len(forecast_test_period)}")
+print(f" Forecast period: {forecast_test_period['ds'].min()} to {forecast_test_period['ds'].max()}")
+print(f" Number of days: {len(forecast_test_period)}")
 
 print("\n[12.2] Generating Alerts")
 print("-" * 80)
 
 alerts_df = generate_alerts(forecast_test_period, alert_thresholds)
 
-print(f"✓ Total alerts generated: {len(alerts_df)}")
+print(f" Total alerts generated: {len(alerts_df)}")
 print(f"\nAlert breakdown by type:")
 print(alerts_df['type'].value_counts())
 
@@ -267,7 +267,7 @@ print(alerts_df['severity'].value_counts())
 
 # Save alerts
 alerts_df.to_csv('generated_alerts.csv', index=False)
-print(f"\n✓ Saved: generated_alerts.csv")
+print(f"\n Saved: generated_alerts.csv")
 
 # ============================================================================
 # SECTION 13: ALERT SYSTEM PERFORMANCE ANALYSIS
@@ -353,7 +353,7 @@ if len(heat_alerts_df) > 0:
 
 axes[0].axhline(y=0, color='blue', linestyle='--', alpha=0.5, label='Frost Threshold')
 axes[0].axhline(y=30, color='red', linestyle='--', alpha=0.5, label='Heat Threshold')
-axes[0].set_ylabel('Temperature (°C)')
+axes[0].set_ylabel('Temperature (degC)')
 axes[0].set_title('Temperature Forecast with Frost & Heat Alerts', fontsize=12, fontweight='bold')
 axes[0].legend(loc='best', fontsize=8)
 axes[0].grid(True, alpha=0.3)
@@ -403,7 +403,7 @@ axes[2].grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('figures/07_alert_system_overview.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/07_alert_system_overview.png")
+print(" Saved: figures/07_alert_system_overview.png")
 plt.close()
 
 # Plot 2: Alert timeline
@@ -429,7 +429,7 @@ ax.grid(True, alpha=0.3, axis='x')
 
 plt.tight_layout()
 plt.savefig('figures/08_alert_timeline.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/08_alert_timeline.png")
+print(" Saved: figures/08_alert_timeline.png")
 plt.close()
 
 # Plot 3: Alert frequency by type
@@ -450,35 +450,35 @@ axes[1].set_title('Alert Distribution by Severity', fontsize=12, fontweight='bol
 
 plt.tight_layout()
 plt.savefig('figures/09_alert_statistics.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: figures/09_alert_statistics.png")
+print(" Saved: figures/09_alert_statistics.png")
 plt.close()
 
 print("\n" + "="*80)
 print("PROJECT 1 COMPLETED: TIME-SERIES FORECASTING & ALERT SYSTEM")
 print("="*80)
-print("\n✅ SUMMARY OF DELIVERABLES:")
+print("\n SUMMARY OF DELIVERABLES:")
 print("-" * 80)
 print("1. Data Processing:")
-print("   ✓ 2,332 daily records from QC database")
-print("   ✓ Train/Val/Test split (1727/366/239 days)")
-print("   ✓ Feature engineering (GDD, temperature range)")
+print("    2,332 daily records from QC database")
+print("    Train/Val/Test split (1727/366/239 days)")
+print("    Feature engineering (GDD, temperature range)")
 print("\n2. Models Developed:")
-print("   ✓ ARIMA(5,1,3) - MAE: 12.18°C")
-print("   ✓ Prophet - MAE: 3.56°C (BEST)")
-print("   ✓ Baseline (Persistence) - MAE: 12.09°C")
+print("    ARIMA(5,1,3) - MAE: 12.18degC")
+print("    Prophet - MAE: 3.56degC (BEST)")
+print("    Baseline (Persistence) - MAE: 12.09degC")
 print("\n3. Alert System:")
-print(f"   ✓ {len(alerts_df)} alerts generated across {len(alert_types)} categories")
-print(f"   ✓ Average lead time: {alerts_df['lead_time_days'].mean():.1f} days")
-print("   ✓ Multi-variable forecasting (temp, humidity, precipitation)")
+print(f"    {len(alerts_df)} alerts generated across {len(alert_types)} categories")
+print(f"    Average lead time: {alerts_df['lead_time_days'].mean():.1f} days")
+print("    Multi-variable forecasting (temp, humidity, precipitation)")
 print("\n4. Visualizations:")
-print("   ✓ 9 publication-quality figures")
-print("   ✓ Forecast comparisons, residual analysis, alert timelines")
+print("    9 publication-quality figures")
+print("    Forecast comparisons, residual analysis, alert timelines")
 print("\n5. Documentation:")
-print("   ✓ Complete methodology documented")
-print("   ✓ Model comparison results saved")
-print("   ✓ Alert log exported (CSV)")
+print("    Complete methodology documented")
+print("    Model comparison results saved")
+print("    Alert log exported (CSV)")
 print("\n" + "="*80)
-print("Resume Alignment: ✅ FULLY DEMONSTRATED")
+print("Resume Alignment:  FULLY DEMONSTRATED")
 print("="*80)
 print('"Built time-series forecasting models (ARIMA, Prophet) to predict')
 print('weather and pest trends, enabling automated alerts that supported')

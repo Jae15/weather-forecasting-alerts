@@ -127,8 +127,18 @@ def extract_hourly_data_from_sql(sql_gz_path, output_csv, max_records=50000):
     return df
 
 if __name__ == '__main__':
-    sql_gz_path = '/home/ubuntu/upload/mawndb_qc-20250827.sql.gz'
-    output_csv = '/home/ubuntu/enviroweather_projects/mawn_hourly_sample.csv'
+    # Update these paths as needed for your system
+    # Place the SQL dump file in the project root or specify full path
+    sql_gz_path = 'mawndb_qc-20250827.sql.gz'  # Or use absolute path
+    output_csv = 'mawn_hourly_sample.csv'
+    
+    # Check if input file exists
+    import os
+    if not os.path.exists(sql_gz_path):
+        print(f"Error: SQL dump file not found at {sql_gz_path}")
+        print(f"Please place the MAWN SQL dump file in the project directory,")
+        print(f"or update the sql_gz_path variable with the correct path.")
+        sys.exit(1)
     
     df = extract_hourly_data_from_sql(sql_gz_path, output_csv, max_records=100000)
 

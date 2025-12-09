@@ -65,4 +65,6 @@ PRIVATE*.md
 # Ignore all markdown files except README.md
 *.md
 !README.md
+*.txt
+!requirements.txt
 
